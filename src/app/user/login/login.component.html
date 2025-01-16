@@ -1,0 +1,21 @@
+<div class="container p-5">
+    
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+   
+        <div class="mb-3 col-6">
+          
+          <input type="text" class="form-control" placeholder="Username" formControlName = "Username">
+         
+        </div>
+        <div class="mb-3 col-6">
+          
+          <input type="password" class="form-control" placeholder="Password" formControlName = "Password">
+        </div>
+       
+        <button type="submit" class="btn btn-danger">Submit</button>
+    
+</form>
+
+</div>
+

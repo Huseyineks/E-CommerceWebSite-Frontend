@@ -1,0 +1,69 @@
+<div class="container p-5">
+    
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    
+       <div class="row">
+            <div class="mb-3 col-12">
+              
+              <input type="text" class="form-control" placeholder="Username" formControlName = "Username">
+             
+            </div>
+            <div class="mb-3 col-6">
+              
+              <input type="password" class="form-control" placeholder="Password" formControlName = "Password">
+            </div>
+
+            <div class="mb-3 col-6">
+              
+                <input type="password" class="form-control" placeholder="ConfirmPassword" formControlName = "ConfirmPassword">
+               
+              </div>
+
+              <div class="mb-3 col-12">
+              
+                <input type="email" class="form-control" placeholder="Email" formControlName = "Email">
+               
+              </div>
+
+              <div class="mb-3 col-4">
+              
+                <input type="text" class="form-control" placeholder="City" formControlName = "City">
+              </div>
+  
+              <div class="mb-3 col-4">
+                
+                  <input type="text" class="form-control" placeholder="Neighbourhood" formControlName = "Neighbourhood">
+                 
+                </div>
+
+                <div class="mb-3 col-4">
+                
+                    <input type="text" class="form-control" placeholder="Street" formControlName = "Street">
+                   
+                  </div>
+
+                <div class="mb-3">
+                    
+                    <textarea class="form-control" rows="3" placeholder="Adress" formControlName = "Adress"></textarea>
+                  </div>
+            
+                
+
+                    <div class="mb-3 col-6">
+              
+                        <input type="text" class="form-control" placeholder="Postal Code" formControlName = "PostalCode">
+                      </div>
+           
+
+                      <div class="mb-3 col-6">
+                    
+                        <input type="text" class="form-control" placeholder="Phone Number" formControlName = "PhoneNumber">
+                       
+                      </div>
+            <button type="submit" class="btn btn-danger">Submit</button>
+        
+
+        </div>
+    </form>
+    
+    </div>
