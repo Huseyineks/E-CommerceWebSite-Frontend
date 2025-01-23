@@ -1,0 +1,46 @@
+.container{
+
+    display: grid;
+    gap: 50px;
+
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: 1fr;
+
+    row-gap: 300px;
+
+
+    
+}
+
+@media (max-width: 1000px) {
+    .container {
+        grid-template-columns: repeat(2, 1fr); /* 2 sütun */
+        row-gap: 330px; /* Daha küçük boşluk */
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        grid-template-columns: 1fr; /* 1 sütun */
+        row-gap: 350px; /* Daha küçük boşluk */
+        
+    }
+}
+
+.card{
+
+    max-width: 300px;
+    max-height: 200px;
+}
+
+.card-button{
+
+    transition: transform .2s;
+    
+}
+
+.card-button:hover{
+
+    transform: scale(1.05);
+    cursor: pointer;
+}
