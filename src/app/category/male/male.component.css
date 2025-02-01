@@ -31,11 +31,16 @@
 
     max-width: 300px;
     max-height: 200px;
+    position: relative;
 }
 
 .card-button{
 
     transition: transform .2s;
+    position: absolute;
+
+    left: 0;
+    
     
 }
 

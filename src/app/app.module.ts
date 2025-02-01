@@ -7,6 +7,9 @@ import { UserModule } from './user/user.module';
 import { HomeComponent } from './home/home.component';
 import { CategoryModule } from './category/category.module';
 import { AdminModule } from './admin/admin.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './services/auth.interceptor';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -21,10 +24,17 @@ import { AdminModule } from './admin/admin.module';
     AppRoutingModule,
     UserModule,
     CategoryModule,
-    AdminModule
+    AdminModule,
+    HttpClientModule
    
   ],
-  providers: [],
+  providers: [
+    {
+      provide : HTTP_INTERCEPTORS,
+      useClass : AuthInterceptor,
+      multi : true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

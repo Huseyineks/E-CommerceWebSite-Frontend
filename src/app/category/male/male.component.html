@@ -1,14 +1,14 @@
-<div class="container p-3">
+<div class="container p-3" *ngIf="products && products.length != 0">
     
-<div class="card mb-3">
+<div class="card mb-3"  *ngFor="let product of products">
     <!-- <h3 class="card-header">Card header</h3> -->
     <div class="card-body">
-      <h5 class="card-title">YAKA DETAYLI CK SWEAT</h5>
-      <h6 class="card-subtitle text-muted">•Lacivert ve Süt kahve renk seçeneği</h6>
+      <h5 class="card-title">{{product.productName}}</h5>
+      <h6 class="card-subtitle text-muted" *ngIf="product.productDescription">{{product.productDescription}}</h6>
     </div>
-    <img mat-card-image src="assets/images/belezza_photo.png">
+    <img mat-card-image [src]="imageUrl+product.productImage">
     <div class="card-body">
-      <p class="card-text">{{100 | currency : 'USD'}}</p>
+      <p class="card-text">{{product.productPrice| currency : 'USD'}}</p>
     </div>
    
     <div class="card-body">
@@ -16,75 +16,6 @@
     </div>
    
   </div>
-
-  <div class="card mb-3">
-    <!-- <h3 class="card-header">Card header</h3> -->
-    <div class="card-body">
-      <h5 class="card-title">YAKA DETAYLI CK SWEAT</h5>
-      <h6 class="card-subtitle text-muted">•Lacivert ve Süt kahve renk seçeneği</h6>
-    </div>
-    <img mat-card-image src="assets/images/belezza_photo.png">
-    <div class="card-body">
-      <p class="card-text">{{100 | currency : 'USD'}}</p>
-    </div>
-   
-    <div class="card-body">
-      <button class="card-button btn btn-primary">SEPETE EKLE</button>
-    </div>
-   
-  </div>
-
-  <div class="card mb-3">
-    <!-- <h3 class="card-header">Card header</h3> -->
-    <div class="card-body">
-      <h5 class="card-title">YAKA DETAYLI CK SWEAT</h5>
-      <h6 class="card-subtitle text-muted">•Lacivert ve Süt kahve renk seçeneği</h6>
-    </div>
-    <img mat-card-image src="assets/images/belezza_photo.png">
-    <div class="card-body">
-      <p class="card-text">{{100 | currency : 'USD'}}</p>
-    </div>
-   
-    <div class="card-body">
-      <button class="card-button btn btn-primary">SEPETE EKLE</button>
-    </div>
-   
-  </div>
-
-  <div class="card mb-3">
-    <!-- <h3 class="card-header">Card header</h3> -->
-    <div class="card-body">
-      <h5 class="card-title">YAKA DETAYLI CK SWEAT</h5>
-      <h6 class="card-subtitle text-muted">•Lacivert ve Süt kahve renk seçeneği</h6>
-    </div>
-    <img mat-card-image src="assets/images/belezza_photo.png">
-    <div class="card-body">
-      <p class="card-text">{{100 | currency : 'USD'}}</p>
-    </div>
-   
-    <div class="card-body">
-      <button class="card-button btn btn-primary">SEPETE EKLE</button>
-    </div>
-   
-  </div>
-
-  <div class="card mb-3">
-    <!-- <h3 class="card-header">Card header</h3> -->
-    <div class="card-body">
-      <h5 class="card-title">YAKA DETAYLI CK SWEAT</h5>
-      <h6 class="card-subtitle text-muted">•Lacivert ve Süt kahve renk seçeneği</h6>
-    </div>
-    <img mat-card-image src="assets/images/belezza_photo.png">
-    <div class="card-body">
-      <p class="card-text">{{100 | currency : 'USD'}}</p>
-    </div>
-   
-    <div class="card-body">
-      <button class="card-button btn btn-primary">SEPETE EKLE</button>
-    </div>
-   
-  </div>
-
-  
+    
   
 </div>

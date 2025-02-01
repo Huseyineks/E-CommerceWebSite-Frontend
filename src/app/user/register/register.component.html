@@ -1,4 +1,12 @@
 <div class="container p-5">
+
+  <div class="validation-errors" *ngIf="validationErrors.length != 0">
+
+    <div class="validation-message text-danger fs-5 mb-2" *ngFor="let error of validationErrors">
+      {{error}}
+    </div>
+
+  </div>
     
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     

@@ -1,6 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { UserDTO } from '../model/user-dto';
+import { UserDTO } from '../model/DTOs/user-dto';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 
@@ -16,6 +16,8 @@ export class LoginComponent implements OnInit{
   loginForm : FormGroup = new FormGroup({});
 
   tokenString : any;
+
+  validationErrors = [];
 
    constructor(private userService : UserService,private router : Router){}
 
@@ -42,16 +44,20 @@ let user : UserDTO = this.loginForm.value;
 this.userService.login(user).subscribe({
   next : (response) => {
 
+    localStorage.setItem('token',response.token);
+    localStorage.setItem('refreshToken',response.rToken);
     
 
     this.router.navigate(['']);
 
    
   },
-  error : () =>{
+  error : (err) =>{
 
     
-    alert(user.Username);
+    this.validationErrors = err.error.errors;
+
+    console.log(this.validationErrors);
   }
 })
 

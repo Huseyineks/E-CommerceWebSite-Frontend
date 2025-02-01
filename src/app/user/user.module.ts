@@ -7,11 +7,13 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
 
+
 @NgModule({
   declarations: [
    
     LoginComponent,
     RegisterComponent
+    
   ],
   imports: [
     CommonModule,

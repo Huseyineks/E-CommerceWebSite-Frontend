@@ -1,7 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { FormGroup,FormControl } from '@angular/forms';
 import { UserService } from '../user.service';
-import { UserDTO } from '../model/user-dto';
+import { UserDTO } from '../model/DTOs/user-dto';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
   
   registerForm : FormGroup = new FormGroup({});
+
+  validationErrors = [];
 
   constructor(private userService : UserService,private router : Router){}
 
@@ -63,9 +65,9 @@ export class RegisterComponent implements OnInit {
 
        
       },
-      error : (error) =>{
+      error : (err) =>{
 
-        alert("DAYI NOLUYOR");
+        this.validationErrors = err.error.errors;
       }
     })
 

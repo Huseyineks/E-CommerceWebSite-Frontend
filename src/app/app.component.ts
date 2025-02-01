@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { UserService } from './user/user.service';
-import { UserDTO } from './user/model/user-dto';
+import { UserDTO } from './user/model/DTOs/user-dto';
 
 @Component({
   selector: 'app-root',
