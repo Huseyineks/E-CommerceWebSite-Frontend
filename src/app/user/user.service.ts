@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserDTO } from './model/DTOs/user-dto';
 import { environment } from 'src/environments/environment.development';
@@ -14,6 +14,8 @@ export class UserService {
   constructor(private http : HttpClient) { }
 
   private apiUrl = environment.apiUrl;
+
+  isTokenValid = signal(0);
 
   private headers = new HttpHeaders().set('Authentication','true');
    
