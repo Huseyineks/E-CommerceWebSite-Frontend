@@ -1,6 +1,6 @@
 import { Component, effect, OnInit} from '@angular/core';
 import { UserService } from './user/user.service';
-import { UserDTO } from './user/model/DTOs/user-dto';
+import { UserDTO } from './models/DTOs/user-dto';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
 export class AppComponent implements OnInit{
 
   isTokenValid : number = 0;
+  productNumber : number = 2;
 
   constructor(private route : Router,private userService : UserService){
 

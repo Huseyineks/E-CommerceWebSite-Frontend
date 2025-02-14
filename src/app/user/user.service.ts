@@ -1,10 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { Observable } from 'rxjs';
-import { UserDTO } from './model/DTOs/user-dto';
+import { UserDTO } from '../models/DTOs/user-dto';
 import { environment } from 'src/environments/environment.development';
-import { RefreshTokenDTO } from './model/DTOs/refresh-token-dto';
-import { TokenRequestDTO } from './model/DTOs/token-request-dto';
+import { RefreshTokenDTO } from '../models/DTOs/refresh-token-dto';
+import { TokenRequestDTO } from '../models/DTOs/token-request-dto';
 
 @Injectable({
   providedIn: 'root'

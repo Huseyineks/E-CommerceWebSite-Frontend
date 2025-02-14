@@ -1,10 +1,10 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { UserService } from '../user/user.service';
-import { TokenRequestDTO } from '../user/model/DTOs/token-request-dto';
+import { TokenRequestDTO } from '../models/DTOs/token-request-dto';
 import { catchError, of, switchMap } from 'rxjs';
-import { LoginResponse } from '../user/model/login-response';
-import { RefreshTokenDTO } from '../user/model/DTOs/refresh-token-dto';
+import { LoginResponse } from '../models/login-response';
+import { RefreshTokenDTO } from '../models/DTOs/refresh-token-dto';
 
 export const authGuard: CanActivateFn = (route, state) => {
 

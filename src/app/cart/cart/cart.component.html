@@ -1,0 +1,7 @@
+<div class="container">
+  <div *ngIf="cartItems">
+    <div *ngFor="let cartItem of cartItems">
+      <img mat-card-image [src]="imageUrl+cartItem.productImage">
+    </div>
+  </div>
+</div>

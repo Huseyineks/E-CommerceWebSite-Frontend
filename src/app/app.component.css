@@ -1,0 +1,19 @@
+.cart-item{
+
+    position: relative;
+}
+
+.cart-badge{
+
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    background-color: white;
+}

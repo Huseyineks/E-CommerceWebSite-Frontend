@@ -1,6 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ProductDTO } from '../model/DTOs/product-dto';
+import { ProductDTO } from '../../models/DTOs/product-dto';
 import { ProductService } from '../services/product.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';

@@ -9,6 +9,7 @@ import { FemaleComponent } from './category/female/female.component';
 import { AddProductComponent } from './admin/add-product/add-product.component';
 import { authGuard } from './services/auth.guard';
 import { HomeComponent } from './home/home.component';
+import { CartComponent } from './cart/cart/cart.component';
 
 
 
@@ -19,7 +20,9 @@ const routes: Routes = [
   {path : 'male', component : MaleComponent,canActivate : [authGuard]},
   {path : 'female', component : FemaleComponent},
   {path : 'add-product', component : AddProductComponent},
-  {path : 'home',component : HomeComponent}
+  {path : 'home',component : HomeComponent},
+  {path : 'cart',component : CartComponent}
+
 
 ];
 
