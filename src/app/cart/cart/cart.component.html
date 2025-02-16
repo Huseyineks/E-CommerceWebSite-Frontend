@@ -1,8 +1,8 @@
 <div class="container">
   <h5 class="card-title cart-text">Sepetim</h5>
-  <div *ngIf="cartItems">
+  <div *ngIf="cartItems.length > 1 else noItem">
 
-    <div class="cart-item" *ngFor="let cartItem of cartItems">
+    <div class="cart-item" *ngFor="let cartItem of cartItems.slice(1)">
       
       <div class="cart-item-title" style="display: flex;">
       <img mat-card-image [src]="imageUrl+cartItem.productImage">
@@ -22,4 +22,8 @@
       
     </div>
   </div>
+
+  <ng-template #noItem>
+    <div>Şu an da sepette mevcut bir ürününüz yok.</div>
+  </ng-template>
 </div>

@@ -33,17 +33,31 @@ export class CartComponent implements OnInit{
 
     const userId : string = payload["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"];
 
+    let nullOrder : Order = {
+      id : -1,
+      productDescription : '',
+      productImage : '',
+      productName : '',
+      productNumber : 0,
+      productPrice : '',
+      rowGuid : ''
+    }
+
     
 
     this.cartService.getCartItems(userId).subscribe({
       next : (data) =>{
        this.cartItems = data;
+
+       this.cartItems = [nullOrder,...this.cartItems];
       },
       error : (err) =>{
 
        console.error(err?.error?.message)
       }
    })
+
+   
   }
     
   }
@@ -97,6 +111,8 @@ export class CartComponent implements OnInit{
       const totalPrice = parseFloat(this.cartItems[cartItemIndex].productPrice) - perPrice;
 
       this.cartItems[cartItemIndex].productPrice = totalPrice.toString();
+
+      
       }
     }
 
