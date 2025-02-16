@@ -21,6 +21,16 @@ export class CartService {
 
   getCartItems(userId : string) : Observable<any>{
 
-    return this.http.post<any>(this.apiUrl + '/api/Order/api/getCartItems',userId);
+    return this.http.get<any>(`${this.apiUrl}/api/Order/api/getCartItems?userId=${userId}`);
+  }
+  increaseNumber(orderId : number) : Observable<any> {
+
+    return this.http.put<any>(`${this.apiUrl}/api/Order/api/increaseNumber?orderId=${orderId}`,null);
+
+  }
+
+  reduceNumber(orderId : number){
+
+    return this.http.put<any>(`${this.apiUrl}/api/Order/api/reduceNumber?orderId=${orderId}`,null);
   }
 }

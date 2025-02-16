@@ -48,5 +48,68 @@ export class CartComponent implements OnInit{
     
   }
 
+  increaseNumber(orderId : number) : void{
+
+    let cartItemIndex = this.cartItems.findIndex(i => i.id == orderId);
+
+    if(cartItemIndex){
+
+      let perPrice = parseFloat(this.cartItems[cartItemIndex].productPrice)/this.cartItems[cartItemIndex].productNumber;
+
+      this.cartItems[cartItemIndex].productNumber += 1;
+
+      const totalPrice = parseFloat(this.cartItems[cartItemIndex].productPrice) + perPrice;
+
+      this.cartItems[cartItemIndex].productPrice = totalPrice.toString();
+    }
+
+    this.cartService.increaseNumber(orderId).subscribe({
+      next : () =>{
+        console.log('Artırıldı.')
+       },
+       error : (err) =>{
+ 
+        console.error(err?.error?.message)
+       }
+    })
+
+  }
+
+  reduceNumber(orderId : number) : void{
+
+    let cartItemIndex = this.cartItems.findIndex(i => i.id == orderId);
+
+    if(cartItemIndex){
+
+      if(this.cartItems[cartItemIndex].productNumber == 1){
+
+        this.cartItems.splice(cartItemIndex,1);
+        
+      }
+
+      else{
+
+      
+      let perPrice = parseFloat(this.cartItems[cartItemIndex].productPrice)/this.cartItems[cartItemIndex].productNumber;
+
+      this.cartItems[cartItemIndex].productNumber -= 1;
+
+      const totalPrice = parseFloat(this.cartItems[cartItemIndex].productPrice) - perPrice;
+
+      this.cartItems[cartItemIndex].productPrice = totalPrice.toString();
+      }
+    }
+
+    this.cartService.reduceNumber(orderId).subscribe({
+      next : () =>{
+        console.log('Azaltıldı.')
+       },
+       error : (err) =>{
+ 
+        console.error(err?.error?.message)
+       }
+    })
+  }
+
 
 }

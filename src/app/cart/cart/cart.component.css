@@ -1,0 +1,91 @@
+.container{
+
+    padding: 20px;
+}
+.cart-text{
+
+    font-size: xx-large;
+    margin-bottom: 30px;
+    text-transform: none;
+}
+
+
+
+.cart-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px #eeeeee solid;
+    border-radius: 0.75rem;;
+    margin-top: 5px;
+    padding: 15px;
+    position: relative;
+    
+}
+.cart-item-title h5{
+
+    margin-left: 5px;
+   
+
+}
+
+.cart-item img{
+
+    height: 80px;
+    width: 80px;
+}
+@media (max-width: 1000px) {
+    .cart-item-title h5{
+
+        margin-left: 5px;
+        width: 100px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    
+    }
+}
+
+@media (max-width: 480px) {
+    .cart-item h5{
+        display: none;
+    }
+}
+
+.quantity{
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px #B7B7B7 solid;
+    height: 30px;
+    width: 85px;
+}
+.quantity div{
+
+    padding: 10px;
+}
+.quantity button{
+
+    background-color: #FAFAFA;
+    height: 100%;
+    width: 25px;
+    border-top: none;
+    border-bottom: none;
+    
+    
+}
+.increase-button{
+
+    border-left: 1px #B7B7B7 solid;
+    border-right: none;
+}
+.reduce-button{
+
+    border-right: 1px #B7B7B7 solid;
+    border-left: none;
+}

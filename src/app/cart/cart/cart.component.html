@@ -1,7 +1,25 @@
 <div class="container">
+  <h5 class="card-title cart-text">Sepetim</h5>
   <div *ngIf="cartItems">
-    <div *ngFor="let cartItem of cartItems">
+
+    <div class="cart-item" *ngFor="let cartItem of cartItems">
+      
+      <div class="cart-item-title" style="display: flex;">
       <img mat-card-image [src]="imageUrl+cartItem.productImage">
+      <h5 class="card-title">{{cartItem.productName}}</h5>
+    </div>
+    <div class="quantity">
+
+      
+      <button class="reduce-button"  (click)="reduceNumber(cartItem.id)">-</button>
+      
+      <div>{{cartItem.productNumber}}</div>
+      
+      <button class="increase-button" (click)="increaseNumber(cartItem.id)">+</button>
+      
+    </div>
+    <p class="card-text">{{cartItem.productPrice| currency : 'USD'}}</p>
+      
     </div>
   </div>
 </div>
