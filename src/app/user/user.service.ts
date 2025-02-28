@@ -44,4 +44,27 @@ export class UserService {
 
 
   }
+
+  getUserId(token : string) : string{
+
+    const payload = JSON.parse(atob(token.split('.')[1]));
+
+    const userId = payload["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"];
+
+    return userId;
+  }
+
+  getToken() : string {
+
+    const token = localStorage.getItem('token');
+
+    if(token){
+
+      return token;
+    }
+    else{
+
+      return '';
+    }
+  }
 }

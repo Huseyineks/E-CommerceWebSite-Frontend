@@ -46,6 +46,19 @@
 
 .card-button:hover{
 
-    transform: scale(1.05);
+    transform: scale(1.10);
     cursor: pointer;
+    background-color: white;
+    border: 1px black solid;
+    color: black;
+}
+
+.card-title{
+
+    max-width: 200px;
+}
+
+.card-subtitle{
+
+    max-width: 200px;
 }

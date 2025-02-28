@@ -1,9 +1,9 @@
 import { Component,OnInit } from '@angular/core';
-import { CartEffects } from '../cart.effects';
 import { CartService } from '../cart.service';
 import { Order } from 'src/app/models/order';
 import { environment } from 'src/environments/environment.development';
 import { OrderDTO } from 'src/app/models/DTOs/order-dto';
+import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-cart',
@@ -20,7 +20,7 @@ export class CartComponent implements OnInit{
   imageUrl = environment.imageUrl;
 
   
-  constructor(private cartService : CartService){}
+  constructor(private cartService : CartService,private userService : UserService){}
 
 
   ngOnInit(): void {
@@ -29,9 +29,9 @@ export class CartComponent implements OnInit{
 
     if(token){
 
-    const payload = JSON.parse(atob(token.split('.')[1]));
+    
 
-    const userId : string = payload["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"];
+    const userId : string = this.userService.getUserId(token);
 
     let nullOrder : Order = {
       id : -1,
@@ -64,6 +64,8 @@ export class CartComponent implements OnInit{
 
   increaseNumber(orderId : number) : void{
 
+    this.cartService.itemNumber.set(this.cartService.itemNumber() + 1);
+
     let cartItemIndex = this.cartItems.findIndex(i => i.id == orderId);
 
     if(cartItemIndex){
@@ -91,11 +93,15 @@ export class CartComponent implements OnInit{
 
   reduceNumber(orderId : number) : void{
 
+    this.cartService.itemNumber.set(this.cartService.itemNumber() - 1);
+
     let cartItemIndex = this.cartItems.findIndex(i => i.id == orderId);
 
     if(cartItemIndex){
 
       if(this.cartItems[cartItemIndex].productNumber == 1){
+
+        
 
         this.cartItems.splice(cartItemIndex,1);
         

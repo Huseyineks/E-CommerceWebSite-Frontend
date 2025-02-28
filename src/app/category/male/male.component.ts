@@ -4,6 +4,7 @@ import { ProductService } from 'src/app/admin/services/product.service';
 import { environment } from 'src/environments/environment.development';
 import { CartService } from 'src/app/cart/cart.service';
 import { OrderDTO } from 'src/app/models/DTOs/order-dto';
+import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-male',
@@ -12,7 +13,7 @@ import { OrderDTO } from 'src/app/models/DTOs/order-dto';
 })
 export class MaleComponent implements OnInit {
 
-  constructor(private productService : ProductService,private cartService : CartService){}
+  constructor(private productService : ProductService,private cartService : CartService,private userService : UserService){}
  
   products : Product[] = [];
 
@@ -34,18 +35,19 @@ export class MaleComponent implements OnInit {
   addItemToCart(productId : string) : void{
 
 
+    this.cartService.itemNumber.set(this.cartService.itemNumber() + 1);
+
+    
     const token = localStorage.getItem('token');
 
     if(token){
 
-    const payload = JSON.parse(atob(token.split('.')[1]));
-
-    const userId = payload["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"];
+    
 
     let orderDTO : OrderDTO = {
 
       productId : productId,
-      userId : userId
+      userId : this.userService.getUserId(token)
     }
     this.cartService.addItemToCart(orderDTO).subscribe({
       next : () =>{

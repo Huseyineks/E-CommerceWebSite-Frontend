@@ -1,17 +1,36 @@
-import { Injectable } from '@angular/core';
+import { Injectable,OnInit, signal } from '@angular/core';
 import { Product } from '../models/product';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
 import { OrderDTO } from '../models/DTOs/order-dto';
 import { Order } from '../models/order';
+import { ProductDTO } from '../models/DTOs/product-dto';
+import { UserService } from '../user/user.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CartService {
+export class CartService{
 
-  constructor(private http : HttpClient) { }
+  public itemNumber = signal(0);
+
+  constructor(private http : HttpClient,private userService : UserService) { 
+   this.getNumber().subscribe({
+
+    next : (data) => {
+      this.itemNumber.set(data);
+    },
+    error : (error) => {
+      console.error(error);
+    }
+   }
+   
+   )
+  }
+
+  
+  
 
   private apiUrl = environment.apiUrl
   addItemToCart(orderDTO : OrderDTO) : Observable<any>{
@@ -22,6 +41,10 @@ export class CartService {
   getCartItems(userId : string) : Observable<any>{
 
     return this.http.get<any>(`${this.apiUrl}/api/Order/api/getCartItems?userId=${userId}`);
+  }
+  getNumber() : Observable<any>{
+
+    return this.http.get<any>(this.apiUrl + '/api/Order/api/getNumber');
   }
   increaseNumber(orderId : number) : Observable<any> {
 

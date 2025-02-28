@@ -3,6 +3,7 @@ import { UserService } from './user/user.service';
 import { UserDTO } from './models/DTOs/user-dto';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { CartService } from './cart/cart.service';
 
 @Component({
   selector: 'app-root',
@@ -12,12 +13,14 @@ import { Observable } from 'rxjs';
 export class AppComponent implements OnInit{
 
   isTokenValid : number = 0;
-  productNumber : number = 2;
+  
+  cartItemNumber : number = 0;
 
-  constructor(private route : Router,private userService : UserService){
+  constructor(private route : Router,private userService : UserService,private cartService : CartService){
 
     effect(() =>{
       this.isTokenValid = this.userService.isTokenValid();
+      this.cartItemNumber = this.cartService.itemNumber();
     
     })
   }
