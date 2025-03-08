@@ -12,12 +12,13 @@ import { CartService } from './cart/cart.service';
 })
 export class AppComponent implements OnInit{
 
-  isTokenValid : number = 0;
+  isTokenValid : string = '';
   
   cartItemNumber : number = 0;
 
   constructor(private route : Router,private userService : UserService,private cartService : CartService){
 
+    
     effect(() =>{
       this.isTokenValid = this.userService.isTokenValid();
       this.cartItemNumber = this.cartService.itemNumber();
@@ -26,9 +27,10 @@ export class AppComponent implements OnInit{
   }
   ngOnInit(): void {
 
+    
     let getToken : string | null  = localStorage.getItem('token');
-    this.isTokenValid = getToken ? 1 : 0;
-
+    this.isTokenValid = getToken ? '1' : '0';
+    console.log("token : " + this.isTokenValid);
   }
 
  
@@ -48,7 +50,7 @@ export class AppComponent implements OnInit{
 
     localStorage.removeItem('token');
     localStorage.removeItem('refreshToken');
-    this.isTokenValid = 0;
+    this.isTokenValid = '0';
 
     
    

@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment.development';
 import { CartService } from 'src/app/cart/cart.service';
 import { OrderDTO } from 'src/app/models/DTOs/order-dto';
 import { UserService } from 'src/app/user/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-male',
@@ -13,13 +14,21 @@ import { UserService } from 'src/app/user/user.service';
 })
 export class MaleComponent implements OnInit {
 
-  constructor(private productService : ProductService,private cartService : CartService,private userService : UserService){}
+  constructor(private productService : ProductService
+    ,private cartService : CartService,
+    private userService : UserService
+  ,private router : Router){}
  
   products : Product[] = [];
+  
+  clickedButton : string[] = [];
 
   imageUrl : string = environment.imageUrl;
 
   ngOnInit(): void {
+
+    
+    
 
    this.productService.getAll().subscribe(data =>{
 
@@ -29,13 +38,24 @@ export class MaleComponent implements OnInit {
 
    });
 
+   
+   this.clickedButton = new Array(this.products.length).fill('');
+
     
   }
 
-  addItemToCart(productId : string) : void{
+  addItemToCart(productId : string,index : number) : void{
 
+    this.userService.isLoginRequired().subscribe(response => {
 
-    this.cartService.itemNumber.set(this.cartService.itemNumber() + 1);
+      if(response){
+
+        
+        this.clickedButton[index] = "clicked";
+
+        this.cartService.itemNumber.set(this.cartService.itemNumber() + 1);
+
+        
 
     
     const token = localStorage.getItem('token');
@@ -60,6 +80,13 @@ export class MaleComponent implements OnInit {
    })
     }
 
+
+      }
+     
+    })
+
+
+    
    
     
     

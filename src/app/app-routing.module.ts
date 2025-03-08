@@ -17,11 +17,11 @@ const routes: Routes = [
   {path : '',redirectTo : 'home',pathMatch : 'full'},
   {path : 'login', component : LoginComponent},
   {path : 'register', component : RegisterComponent},
-  {path : 'male', component : MaleComponent,canActivate : [authGuard]},
+  {path : 'male', component : MaleComponent},
   {path : 'female', component : FemaleComponent},
   {path : 'add-product', component : AddProductComponent},
   {path : 'home',component : HomeComponent},
-  {path : 'cart',component : CartComponent}
+  {path : 'cart',component : CartComponent,canActivate : [authGuard]}
 
 
 ];

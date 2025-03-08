@@ -1,6 +1,6 @@
 <div class="container p-3" *ngIf="products && products.length != 0">
     
-<div class="card mb-3"  *ngFor="let product of products">
+<div class="card mb-3"  *ngFor="let product of products; let i = index">
     <!-- <h3 class="card-header">Card header</h3> -->
     <div class="card-body">
       <h5 class="card-title">{{product.productName}}</h5>
@@ -12,7 +12,7 @@
     </div>
    
     <div class="card-body">
-      <button class="card-button btn btn-primary" (click)="addItemToCart(product.id.toString())">SEPETE EKLE</button>
+      <button class="card-button btn btn-primary {{clickedButton[i]}}" (click)="addItemToCart(product.id.toString(),i)" (mouseleave)="clickedButton[i] = '';">{{clickedButton[i] == "clicked" ? 'SEPETE EKLENDİ!' : 'SEPETE EKLE'}}</button>
     </div>
    
   </div>

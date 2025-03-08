@@ -47,7 +47,7 @@ this.userService.login(user).subscribe({
     localStorage.setItem('token',response.token);
     localStorage.setItem('refreshToken',response.rToken);
     
-    this.userService.isTokenValid.set(1);
+    this.userService.isTokenValid.set('1');
     
     this.router.navigate(['/home']);
     
