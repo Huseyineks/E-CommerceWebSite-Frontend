@@ -6,6 +6,7 @@ import { CartService } from 'src/app/cart/cart.service';
 import { OrderDTO } from 'src/app/models/DTOs/order-dto';
 import { UserService } from 'src/app/user/user.service';
 import { Router } from '@angular/router';
+import { ModalService } from 'src/app/shared/modal/modal.service';
 
 @Component({
   selector: 'app-male',
@@ -17,7 +18,8 @@ export class MaleComponent implements OnInit {
   constructor(private productService : ProductService
     ,private cartService : CartService,
     private userService : UserService
-  ,private router : Router){}
+  ,private router : Router
+  ,private modalService : ModalService){}
  
   products : Product[] = [];
   
@@ -55,19 +57,11 @@ export class MaleComponent implements OnInit {
 
         this.cartService.itemNumber.set(this.cartService.itemNumber() + 1);
 
-        
-
-    
-    const token = localStorage.getItem('token');
-
-    if(token){
-
-    
 
     let orderDTO : OrderDTO = {
 
-      productId : productId,
-      userId : this.userService.getUserId(token)
+      productId : productId
+      
     }
     this.cartService.addItemToCart(orderDTO).subscribe({
       next : () =>{
@@ -78,7 +72,7 @@ export class MaleComponent implements OnInit {
        console.error(err?.error?.message)
       }
    })
-    }
+    
 
 
       }
@@ -90,6 +84,21 @@ export class MaleComponent implements OnInit {
    
     
     
+
+  }
+
+  showModal(productId : number){
+
+    this.productService.get(productId).subscribe({
+      next : (data) => {
+        
+        this.modalService.openModal(data);
+        console.log('Başarıyla tamamlandı.');
+      },
+      error : (err) => {
+        console.error(err?.error?.errorMessage);
+      }
+    })
 
   }
 

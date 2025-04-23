@@ -1,4 +1,4 @@
-import { Injectable,OnInit, signal } from '@angular/core';
+import { effect, Injectable,OnInit, signal } from '@angular/core';
 import { Product } from '../models/product';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -16,17 +16,29 @@ export class CartService{
   public itemNumber = signal(0);
 
   constructor(private http : HttpClient,private userService : UserService) { 
-   this.getNumber().subscribe({
 
-    next : (data) => {
-      this.itemNumber.set(data);
-    },
-    error : (error) => {
-      console.error(error);
-    }
-   }
+    effect(() =>{
+
+      if(this.userService.isTokenValid() == '1'){
+        this.getNumber().subscribe({
+     
+         next : (data) => {
+           this.itemNumber.set(data);
+         },
+         error : (error) => {
+           console.error(error);
+         }
+        }
+        
+        )
+       }
+       else{
+     
+         this.itemNumber.set(0);
+       }
+
+    })
    
-   )
   }
 
   
@@ -35,12 +47,12 @@ export class CartService{
   private apiUrl = environment.apiUrl
   addItemToCart(orderDTO : OrderDTO) : Observable<any>{
 
-    return this.http.post<any>(this.apiUrl + '/api/Order/api/addItemToCart',orderDTO);
+    return this.http.post<any>(this.apiUrl + '/api/Order/api/addItemToCart',orderDTO,{withCredentials : true});
   }
 
-  getCartItems(userId : string) : Observable<any>{
+  getCartItems() : Observable<any>{
 
-    return this.http.get<any>(`${this.apiUrl}/api/Order/api/getCartItems?userId=${userId}`);
+    return this.http.get<any>(this.apiUrl + '/api/Order/api/getCartItems',{withCredentials : true});
   }
   getNumber() : Observable<any>{
 

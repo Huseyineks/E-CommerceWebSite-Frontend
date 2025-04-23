@@ -6,7 +6,7 @@
       <h5 class="card-title">{{product.productName}}</h5>
       <h6 class="card-subtitle text-muted" *ngIf="product.productDescription">{{product.productDescription}}</h6>
     </div>
-    <img mat-card-image [src]="imageUrl+product.productImage">
+    <img mat-card-image [src]="imageUrl+product.productImage" (click)="showModal(product.id)">
     <div class="card-body">
       <p class="card-text">{{product.productPrice| currency : 'USD'}}</p>
     </div>
@@ -19,3 +19,5 @@
     
   
 </div>
+
+<app-modal></app-modal>

@@ -25,13 +25,13 @@ export class CartComponent implements OnInit{
 
   ngOnInit(): void {
 
-    const token = localStorage.getItem('token');
-
-    if(token){
+    
 
     
 
-    const userId : string = this.userService.getUserId(token);
+    
+
+    
 
     let nullOrder : Order = {
       id : -1,
@@ -45,7 +45,7 @@ export class CartComponent implements OnInit{
 
     
 
-    this.cartService.getCartItems(userId).subscribe({
+    this.cartService.getCartItems().subscribe({
       next : (data) =>{
        this.cartItems = data;
 
@@ -53,12 +53,12 @@ export class CartComponent implements OnInit{
       },
       error : (err) =>{
 
-       console.error(err?.error?.message)
+       console.error(err);
       }
    })
 
    
-  }
+  
     
   }
 

@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { MaleComponent } from './male/male.component';
 import { FemaleComponent } from './female/female.component';
 
+import { AppModule } from '../app.module';
+import { SharedModule } from '../shared/shared.module';
+
 
 
 @NgModule({
@@ -11,7 +14,8 @@ import { FemaleComponent } from './female/female.component';
     FemaleComponent
   ],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    SharedModule
+  ],
 })
 export class CategoryModule { }

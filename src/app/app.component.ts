@@ -28,9 +28,11 @@ export class AppComponent implements OnInit{
   ngOnInit(): void {
 
     
-    let getToken : string | null  = localStorage.getItem('token');
-    this.isTokenValid = getToken ? '1' : '0';
-    console.log("token : " + this.isTokenValid);
+    let login : string | null  = localStorage.getItem('login');
+   
+    this.userService.isTokenValid.set(login ? '1' : '0');
+
+    
   }
 
  
@@ -46,10 +48,21 @@ export class AppComponent implements OnInit{
   logout() : void{
    
 
-    
+    this.userService.logout().subscribe({
 
-    localStorage.removeItem('token');
-    localStorage.removeItem('refreshToken');
+      next : () => {
+
+        console.log("İşlem başarıyla tamamlandı.")
+      },
+
+      error : () => {
+
+        console.error("İşlem tamamlanamadı.");
+      }
+    });
+    
+    localStorage.removeItem('login');
+    
     this.isTokenValid = '0';
 
     

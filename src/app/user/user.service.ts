@@ -15,14 +15,12 @@ export class UserService {
 
   constructor(private http : HttpClient,private router : Router) {
 
-    this.isTokenValid.set(localStorage.getItem('token') ? '1' : '0')
+    this.isTokenValid.set(localStorage.getItem('login') ? '1' : '0')
 
 
    }
 
   private apiUrl = environment.apiUrl;
-
-  flag : string = '';
   
   isTokenValid = signal('0');
   
@@ -38,57 +36,36 @@ export class UserService {
   login(userDTO : UserDTO) : Observable<any>{
 
 
-    return this.http.post<any>(this.apiUrl + '/api/Auth/api/login',userDTO);
+    return this.http.post<any>(this.apiUrl + '/api/Auth/api/login',userDTO,{withCredentials : true});
   }
 
-  tokenExpired(model : TokenRequestDTO) : Observable<any>{
+  tokenExpired() : Observable<any>{
 
-    return this.http.post<any>(this.apiUrl + '/api/Auth/api/tokenExpired',model);
+    return this.http.get<any>(this.apiUrl + '/api/Auth/api/tokenExpired',{withCredentials : true});
   }
 
-  refreshToken(model : RefreshTokenDTO) : Observable<any>{
+  refreshToken() : Observable<any>{
 
-    return this.http.post<any>(this.apiUrl + '/api/Auth/api/refreshToken',model);
+    return this.http.get<any>(this.apiUrl + '/api/Auth/api/refreshToken',{withCredentials : true});
 
 
   }
 
-  getUserId(token : string) : string{
+  logout() : Observable<any>{
 
-    const payload = JSON.parse(atob(token.split('.')[1]));
-
-    const userId = payload["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"];
-
-    return userId;
+    
+    return this.http.get<any>(this.apiUrl + '/api/Auth/api/logout',{withCredentials : true})
   }
 
-  getToken() : string {
 
-    const token = localStorage.getItem('token');
 
-    if(token){
-
-      return token;
-    }
-    else{
-
-      return '';
-    }
-  }
 
 
   isLoginRequired() : Observable<any>{
 
-    const token = localStorage.getItem('token');
-
-    if(token){
-
-      let model : TokenRequestDTO = {
     
-        token : token
-    }
   
-    return this.tokenExpired(model).pipe(
+    return this.tokenExpired().pipe(
     
                 
     
@@ -103,29 +80,25 @@ export class UserService {
     
                 if(error?.error?.message === 'Token is expired.'){
     
-                    let model : RefreshTokenDTO = {
-    
-                        token : localStorage.getItem('token'),
-                        refreshToken : localStorage.getItem('refreshToken')
-                    };
-    
-                      return this.refreshToken(model).pipe(
-    
-                        switchMap((data)=>{
-    
-                        let response : LoginResponse = data.response;
-    
                     
     
-                        localStorage.setItem('token',response.jwtToken);
-                        localStorage.setItem('refreshToken',response.refreshToken);
+                      return this.refreshToken().pipe(
     
+                        switchMap(()=>{
+    
+                        
                        
                         return of(true);
     
                             
                             
     
+                        }),
+                        catchError(err => {
+                          
+                          console.error(err);
+                          this.router.navigate(['/login']);
+                          return of(false);
                         })
     
     
@@ -153,13 +126,12 @@ export class UserService {
   
   
   
-    }
-    else{
+    
+    
   
-      this.router.navigate(['/login']);
-      return of(false);
+      
   
-    }
+    
   
          
     

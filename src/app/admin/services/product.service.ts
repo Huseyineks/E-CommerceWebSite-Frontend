@@ -21,6 +21,11 @@ export class ProductService {
 
   }
 
+  get(productId : number) : Observable<Product>{
+
+    return this.http.get<Product>(`${this.apiUrl}/api/Product/api/get?id=${productId}`)
+  }
+
   addProduct(productDTO : FormData) : Observable<void> {
 
 

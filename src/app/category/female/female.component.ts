@@ -18,57 +18,11 @@ export class FemaleComponent implements OnInit{
  
  apiUrl : string = environment.apiUrl;
 
- username : string = "";
- email : string = "";
-
- userDTO : UserDTO = {
-
- };
-
- refreshTokenDTO : RefreshTokenDTO = {
-
-  refreshToken : localStorage.getItem('refreshToken'),
-  token : localStorage.getItem('token')
-
- };
-
- loginResponse : LoginResponse = {
-
-  isLoggedIn : false,
-  jwtToken : 'sa',
-  refreshToken : 'as'
-
- };
-
- token : TokenRequestDTO = {
-
-  token : "sa"
-
- }
+ 
   
  ngOnInit(): void {
 
-  
-
-  // this.userService.refreshToken(this.refreshTokenDTO).subscribe({
-
-  //   next : (response) =>{
-
-  //     this.loginResponse = response.response;
-
-  //     alert(this.loginResponse.jwtToken);
-  //   },
-
-  //   error : () =>{
-
-  //     alert("sa");
-  //   }
-  // })
-
-  // this.userService.tokenExpired(this.token).subscribe();
     
-    
-  
   
   
 }

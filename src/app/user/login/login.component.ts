@@ -42,10 +42,9 @@ ngOnInit(): void {
 let user : UserDTO = this.loginForm.value;
 
 this.userService.login(user).subscribe({
-  next : (response) => {
+  next : () => {
 
-    localStorage.setItem('token',response.token);
-    localStorage.setItem('refreshToken',response.rToken);
+    localStorage.setItem('login','true');
     
     this.userService.isTokenValid.set('1');
     

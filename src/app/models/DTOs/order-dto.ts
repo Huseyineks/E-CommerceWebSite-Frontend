@@ -1,6 +1,5 @@
 export interface OrderDTO {
 
-    productId : string,
-    userId : string
-
+    productId : string
+    
 }

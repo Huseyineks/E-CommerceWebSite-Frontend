@@ -12,6 +12,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { CartComponent } from './cart/cart/cart.component';
 
+import { MaleComponent } from './category/male/male.component';
+import { SharedModule } from './shared/shared.module';
+
 
 
 @NgModule({
@@ -25,9 +28,9 @@ import { CartComponent } from './cart/cart/cart.component';
     BrowserModule,
     AppRoutingModule,
     UserModule,
-    CategoryModule,
     AdminModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
    
   ],
   providers: [
