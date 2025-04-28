@@ -1,8 +1,8 @@
 import { Component, effect, OnInit} from '@angular/core';
 import { UserService } from './user/user.service';
 import { UserDTO } from './models/DTOs/user-dto';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter, Observable } from 'rxjs';
 import { CartService } from './cart/cart.service';
 
 @Component({
@@ -16,7 +16,9 @@ export class AppComponent implements OnInit{
   
   cartItemNumber : number = 0;
 
-  constructor(private route : Router,private userService : UserService,private cartService : CartService){
+  isAdminPage = false;
+
+  constructor(private route : Router,private userService : UserService,private cartService : CartService,private router : Router){
 
     
     effect(() =>{
@@ -32,6 +34,13 @@ export class AppComponent implements OnInit{
    
     this.userService.isTokenValid.set(login ? '1' : '0');
 
+
+
+    this.router.events
+    .pipe(filter(event => event instanceof NavigationEnd))
+    .subscribe(() => {
+      this.isAdminPage = this.router.url.includes('/admin');
+    });
     
   }
 

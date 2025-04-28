@@ -1,0 +1,53 @@
+*,h1{
+
+    font-family: 'Work Sans', sans-serif;
+
+    letter-spacing: 3px;
+}
+
+.container{
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    
+}
+
+.table-customers{
+
+    width: 100%;
+    height: 80vh; /* yüksekliği belirlemen lazım */
+    overflow-y: auto; /* sadece dikey (yukarı-aşağı) scroll */
+    overflow-x: hidden; /* yatay scroll olmasın */
+}
+
+.table-customers .search-container{
+
+    width: 35%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.table-customers .search-container input{
+
+    width: 100%;
+}
+.table-customers .search-container svg{
+
+    position: absolute;
+    right: 15px;
+}
+.table-title{
+
+    padding: 20px;
+}
+
+.table-title h1{
+
+    
+    font-weight: bold;
+}
+

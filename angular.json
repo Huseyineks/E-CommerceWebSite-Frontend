@@ -97,6 +97,7 @@
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "./node_modules/bootswatch/dist/lux/bootstrap.css",
               "src/styles.css"
+              
             ],
             "scripts": []
           }

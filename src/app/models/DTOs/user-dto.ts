@@ -1,22 +1,22 @@
 export interface UserDTO {
 
-     Username? : string,
+     username? : string,
 
-     Password? : string,
+     password? : string,
   
-     ConfirmPassword? : string,
+     confirmPassword? : string,
   
-     Email? : string,
+     email? : string,
   
-     Neighbourhood? : string,
+     neighbourhood? : string,
   
-     Street? : string,
+     street? : string,
   
-     City?: string,
+     city?: string,
   
-     PostalCode? : string,
+     postalCode? : string,
   
-     Adress? : string,
+     adress? : string,
   
-     PhoneNumber? : string
+     phoneNumber? : string
 }

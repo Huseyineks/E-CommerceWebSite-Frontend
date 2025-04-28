@@ -136,4 +136,15 @@ export class UserService {
          
     
   }
+
+  isAdmin() : Observable<boolean>{
+
+
+    return this.http.get<boolean>(this.apiUrl + '/api/Auth/api/isAdmin',{withCredentials : true})
+  }
+
+  getAllUsers() : Observable<UserDTO[]>{
+
+    return this.http.get<UserDTO[]>(this.apiUrl + '/api/User/api/users');
+  }
 }
