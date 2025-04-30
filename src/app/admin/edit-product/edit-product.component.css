@@ -39,7 +39,7 @@ form{
     border: 1px solid lightgray;
 }
 
-div.imageExisted{
+div.imageUpdated{
     display: none;
 }
 
@@ -62,6 +62,13 @@ input,input:focus{
     color: #55595C;
   }
 
+
+  .edit-button:hover{
+
+    transform: scale(1.05);
+    cursor: pointer;
+    
+}
 
 
 

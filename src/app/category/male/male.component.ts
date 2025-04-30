@@ -87,7 +87,7 @@ export class MaleComponent implements OnInit {
 
   }
 
-  showModal(productId : number){
+  showModal(productId : string){
 
     this.productService.get(productId).subscribe({
       next : (data) => {

@@ -1,0 +1,61 @@
+
+<div class="container p-3">
+
+  
+
+
+    <div class="validation-errors" *ngIf="validationErrors.length != 0">
+  
+      <div class="validation-message text-danger fs-5 mb-2" *ngFor="let error of validationErrors">
+        {{error}}
+      </div>
+  
+    </div>
+  
+  
+      <div class="card mb-3 border-0">
+  
+        <div>
+          <h1 style="display: flex; justify-content: flex-start;">GÜNCELLE</h1>
+        <form [formGroup]="productForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+          
+          <div class="card-body">
+  
+           <input type="text" formControlName = "Id" hidden>
+
+           <input type="text" formControlName = "RowGuid" hidden>
+            
+            <input type="text" class="form-control name-input"  placeholder="{{this.product.productName}}" formControlName = "ProductName">
+      
+            <input type="text" class="form-control description-input"  placeholder="{{this.product.productDescription}}" formControlName = "ProductDescription">
+          
+            <div class="imageField">
+  
+              <div class="{{imageUpdated}}">
+                <img  [src]="imageUrl+product.productImage " alt="Önizleme" height="257px" width="455px">
+          </div>
+          <img  *ngIf="imageUpdated"  [src]="imagePreview" alt="Önizleme" height="257px" width="455px">
+            
+          </div>
+         
+          
+          </div>
+          
+          <input class="form-control" type="file" id="formFile" formControlName = "ProductImage" (change)="uploadFile($event)">
+          
+          <div class="card-body">
+              <input type="text" class="form-control"  placeholder="{{this.product.productPrice}}" formControlName = "ProductPrice">
+            </div>
+          
+        </form>
+        <div class="card-body mt-1">
+          <button type="submit" class="edit-button btn btn-primary mt-2" (click)="onSubmit()">GÜNCELLE</button>
+         </div>
+      </div>
+        </div>
+      
+      
+       
+      </div>
+  
+  

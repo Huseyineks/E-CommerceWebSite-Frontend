@@ -10,6 +10,9 @@ import { ProductsComponent } from './products/products.component';
 import { OrdersComponent } from './orders/orders.component';
 import { CustomersComponent } from './customers/customers.component';
 import { HomeComponent } from '../home/home.component';
+import { SharedModule } from "../shared/shared.module";
+import { ModalComponent } from '../shared/modal/modal.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
 
 
 
@@ -21,14 +24,16 @@ import { HomeComponent } from '../home/home.component';
     DashboardComponent,
     ProductsComponent,
     OrdersComponent,
-    CustomersComponent
+    CustomersComponent,
+    EditProductComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
-  ],
+    AppRoutingModule,
+    SharedModule
+],
   exports : [AdminComponent]
 })
 export class AdminModule { }

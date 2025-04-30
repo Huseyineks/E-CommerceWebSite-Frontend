@@ -7,3 +7,28 @@
 
     display: none;
 }
+
+.modal{
+
+    border: 2px solid black;
+}
+
+.modal-body{
+    padding: 0;
+    height: 400px;
+    width: 400px;
+    position: relative;
+}
+
+.modal-body img{
+
+    height: 100%;
+    width: 100%;
+}
+
+.modal-footer{
+
+    display: flex;
+    justify-content: start;
+    
+}

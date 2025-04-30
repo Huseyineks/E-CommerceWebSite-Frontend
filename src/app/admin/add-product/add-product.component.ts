@@ -17,12 +17,15 @@ export class AddProductComponent implements OnInit {
 
   private apiUrl = environment.apiUrl;
 
+  imageExisted : string = '';
+
   selectedFile : File | null = null;
 
   productForm : FormGroup = new FormGroup({});
 
   validationErrors = [];
 
+  imagePreview: string | ArrayBuffer | null = null;
 
   ngOnInit(): void {
     
@@ -77,15 +80,26 @@ export class AddProductComponent implements OnInit {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
       this.selectedFile = input.files[0];
+
+
+      const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result;
+    };
+    reader.readAsDataURL(this.selectedFile);
+    this.imageExisted = 'imageExisted';
     }
     else{
 
       this.selectedFile = null;
     }
 
+    
 
 
   }
+
+ 
 
 
 

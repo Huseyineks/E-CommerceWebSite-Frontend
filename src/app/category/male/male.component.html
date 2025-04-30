@@ -2,11 +2,11 @@
     
 <div class="card mb-3"  *ngFor="let product of products; let i = index">
     <!-- <h3 class="card-header">Card header</h3> -->
-    <div class="card-body">
+    <div class="card-body card-title-part">
       <h5 class="card-title">{{product.productName}}</h5>
       <h6 class="card-subtitle text-muted" *ngIf="product.productDescription">{{product.productDescription}}</h6>
     </div>
-    <img mat-card-image [src]="imageUrl+product.productImage" (click)="showModal(product.id)">
+    <img mat-card-image [src]="imageUrl+product.productImage" (click)="showModal(product.rowGuid)" height="299px">
     <div class="card-body">
       <p class="card-text">{{product.productPrice| currency : 'USD'}}</p>
     </div>

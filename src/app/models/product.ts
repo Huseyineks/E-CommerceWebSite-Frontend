@@ -5,7 +5,7 @@ export interface Product {
     productName : string,
     productDescription : string,
     productPrice : string,
-    productImage : string,
-    size : any
+    productImage : any
+    
     
 }
