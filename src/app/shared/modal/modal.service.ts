@@ -12,6 +12,8 @@ export class ModalService {
   modalData$ = this.modalDataSource.asObservable();
   modalState = signal('');
 
+ 
+
   
 
   openModal(data: Product) {

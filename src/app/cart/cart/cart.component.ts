@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,effect,OnInit } from '@angular/core';
 import { CartService } from '../cart.service';
 import { Order } from 'src/app/models/order';
 import { environment } from 'src/environments/environment.development';
@@ -19,8 +19,16 @@ export class CartComponent implements OnInit{
 
   imageUrl = environment.imageUrl;
 
+  cartItemNumber : number = 0;
   
-  constructor(private cartService : CartService,private userService : UserService){}
+  constructor(private cartService : CartService,private userService : UserService){
+
+    effect(() =>{
+         
+          this.cartItemNumber = this.cartService.itemNumber();
+        
+        })
+  }
 
 
   ngOnInit(): void {

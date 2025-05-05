@@ -6,7 +6,10 @@
 
     font-size: xx-large;
     margin-bottom: 30px;
-    text-transform: none;
+    color: black;
+    font-weight: 500;
+    
+   
 }
 
 
@@ -25,6 +28,7 @@
 .cart-item-title h5{
 
     margin-left: 5px;
+
    
 
 }
@@ -88,4 +92,33 @@
 
     border-right: 1px #B7B7B7 solid;
     border-left: none;
+}
+
+
+.confirm-button:hover{
+
+    transform: scale(1.05);
+}
+
+
+.number-box{
+
+   
+
+    
+    display: inline-block;
+    
+
+   
+    
+
+    
+}
+
+.number-box p{
+
+   text-align: center;
+
+   
+   
 }

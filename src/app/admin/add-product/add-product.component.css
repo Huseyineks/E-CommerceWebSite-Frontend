@@ -17,7 +17,22 @@ h1{
     align-items: center;
     height: 100%;
     width: 100%;
+    flex-direction: row;
     
+   
+    
+}
+
+form{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.skeleton-part .border-part{
+    border: 1px solid lightgray;
+
 }
 
 .card-body{
@@ -34,10 +49,6 @@ h1{
     
 }
 
-form{
-
-    border: 1px solid lightgray;
-}
 
 div.imageExisted{
     display: none;
@@ -60,6 +71,21 @@ input,input:focus{
   input.name-input{
 
     color: #55595C;
+  }
+
+  table input{
+
+    border: 0;
+    outline: 0;
+  }
+  
+  table input[formControlName = "size"]{
+
+    border: none;
+    outline: none;
+    caret-color: transparent;
+    background-color: transparent;
+    pointer-events: none; 
   }
 
 

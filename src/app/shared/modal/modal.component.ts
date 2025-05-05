@@ -39,6 +39,7 @@ export class ModalComponent {
 
   ngOnInit() {
     this.modalService.modalData$.subscribe(data => {
+      
       this.modalData = data;
 
     });

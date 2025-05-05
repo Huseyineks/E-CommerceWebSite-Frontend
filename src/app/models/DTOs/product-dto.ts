@@ -1,3 +1,5 @@
+import { ProductSizes } from "../product-sizes";
+
 export interface ProductDTO {
 
     Id : any,
@@ -5,6 +7,7 @@ export interface ProductDTO {
     ProductName : string,
     ProductDescription : string,
     ProductImage : any,
-    ProductPrice : string
+    ProductPrice : string,
+    ProductSizes : ProductSizes[] |  null
 
 }

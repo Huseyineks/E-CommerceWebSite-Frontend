@@ -1,10 +1,11 @@
 import { Component,OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { ProductDTO } from '../../models/DTOs/product-dto';
 import { ProductService } from '../services/product.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
+import { ProductSizes } from 'src/app/models/product-sizes';
 
 @Component({
   selector: 'app-add-product',
@@ -34,7 +35,21 @@ export class AddProductComponent implements OnInit {
       ProductName : new FormControl(''),
       ProductDescription : new FormControl(''),
       ProductPrice : new FormControl(''),
-      ProductImage : new FormControl('')
+      ProductImage : new FormControl(''),
+      ProductSizes: new FormArray([
+        new FormGroup({
+          size: new FormControl('Small'),
+          stock: new FormControl('0')
+        }),
+        new FormGroup({
+          size: new FormControl('Medium'),
+          stock: new FormControl('0')
+        }),
+        new FormGroup({
+          size: new FormControl('Large'),
+          stock: new FormControl('0')
+        })
+      ])
 
     });
   }
@@ -52,16 +67,22 @@ export class AddProductComponent implements OnInit {
     formData.append('ProductImage',this.selectedFile != null ? this.selectedFile : 'saaaa');
 
 
-    
+    if(productDTO.ProductSizes){
+      
+      formData.append('ProductSizes', JSON.stringify(productDTO.ProductSizes));
+
+      
+    }
+  
 
     
     
 
-    this.productService.addProduct(formData).subscribe({
+     this.productService.addProduct(formData).subscribe({
 
       next : () => {
 
-        this.router.navigate(['']);
+        this.router.navigate(['admin/products']);
 
       },
       error : (err) => {
@@ -97,6 +118,10 @@ export class AddProductComponent implements OnInit {
     
 
 
+  }
+
+  productSizesFormArray(): FormArray {
+    return this.productForm.get('ProductSizes') as FormArray;
   }
 
  

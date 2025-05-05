@@ -15,10 +15,16 @@
 
     <div class="card mb-3 border-0">
 
-      <div>
+      <div class="product-form">
         <h1 style="display: flex; justify-content: flex-start;">ÜRÜN EKLE</h1>
       <form [formGroup]="productForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
         
+        <div class="skeleton-part">
+
+          <div class="border-part">
+
+          
+       
         <div class="card-body">
 
          
@@ -47,15 +53,58 @@
         <div class="card-body">
             <input type="text" class="form-control"  placeholder="Fiyat" formControlName = "ProductPrice">
           </div>
+        </div>
+          <div class="card-body mt-1">
+            <button type="submit" class="btn btn-primary mt-2">OLUŞTUR</button>
+           </div>
+          </div>
         
-      </form>
-      <div class="card-body mt-1">
-        <button type="submit" class="btn btn-primary mt-2" (click)="onSubmit()">OLUŞTUR</button>
-       </div>
+             <div class="product-size-form">
+      <div class="container">
+
+        
+        <div class="table-customers">
+                     
+    
+              
+    <table class="table" formArrayName="ProductSizes">
+        <thead>
+          <tr>
+            <th scope="col">Beden</th>
+            <th scope="col">Adet</th>
+           
+          </tr>
+        </thead>
+        <tbody>
+        
+          <tr *ngFor="let sizeGroup of productSizesFormArray().controls; let i = index" [formGroupName]="i">
+            <td>
+              <input formControlName="size"/>
+            </td>
+            <td>
+              <input formControlName="stock" type="text" />
+            </td>
+          </tr>
+        
+         
+        </tbody>
+      </table>
     </div>
+    
+    
+    </div>
+          </div>
+        
+     
+      </form>
+    </div>
+ 
+
+        
+    
       </div>
     
-    
+  
      
     </div>
 
