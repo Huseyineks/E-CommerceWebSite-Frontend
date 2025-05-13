@@ -86,13 +86,26 @@ img{
 
 
 
-.card-button{
+.card-button.edit-button{
 
     transition: transform .2s;
     position: absolute;
 
     transition: background-color .5s;
     left: 0;
+    
+    
+}
+
+.card-button.delete-button{
+
+    transition: transform .2s;
+    position: absolute;
+
+    transition: background-color .5s;
+    right: 0;
+
+    border: gray 1px solid;
     
     
 }

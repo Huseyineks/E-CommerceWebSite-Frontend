@@ -51,4 +51,22 @@ export class ProductsComponent implements OnInit {
   
   
     }
+
+    deleteProduct(rowGuid : string) : void{
+
+
+      this.products = this.products.filter(i => i.rowGuid != rowGuid);
+
+    this.productService.deleteProduct(rowGuid).subscribe({
+      next : () => {
+
+        console.log("Silme işlemi başarıyla tammamlandı.")
+      }
+      ,
+      error : () => {
+
+        console.error("Bir hata oluştu");
+      }
+    })
+    }
 }

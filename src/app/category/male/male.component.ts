@@ -23,9 +23,11 @@ export class MaleComponent implements OnInit {
  
   products : Product[] = [];
   
-  clickedButton : string[] = [];
+ 
 
   imageUrl : string = environment.imageUrl;
+
+  chosenSize : string = '';
 
   ngOnInit(): void {
 
@@ -41,52 +43,14 @@ export class MaleComponent implements OnInit {
    });
 
    
-   this.clickedButton = new Array(this.products.length).fill('');
-
-    
-  }
-
-  addItemToCart(productId : string,index : number) : void{
-
-    this.userService.isLoginRequired().subscribe(response => {
-
-      if(response){
-
-        
-        this.clickedButton[index] = "clicked";
-
-        this.cartService.itemNumber.set(this.cartService.itemNumber() + 1);
-
-
-    let orderDTO : OrderDTO = {
-
-      productId : productId
-      
-    }
-    this.cartService.addItemToCart(orderDTO).subscribe({
-      next : () =>{
-       console.log('Sepete başarıyla eklendi.')
-      },
-      error : (err) =>{
-
-       console.error(err?.error?.message)
-      }
-   })
-    
-
-
-      }
-     
-    })
-
-
-    
    
-    
-    
 
+    
   }
 
+  
+
+ 
   showModal(productId : string){
 
     this.productService.get(productId).subscribe({

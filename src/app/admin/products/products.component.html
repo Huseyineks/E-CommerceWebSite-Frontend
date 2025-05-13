@@ -28,7 +28,8 @@
             </div>
            
             <div class="card-body">
-              <button class="card-button btn btn-primary" (click)="editProduct(product.rowGuid)" >EDIT</button>
+              <button class="card-button btn btn-primary edit-button" (click)="editProduct(product.rowGuid)" >EDIT</button>
+              <button class="card-button btn btn-secondary delete-button" (click)="deleteProduct(product.rowGuid)">DELETE</button>
             </div>
            
           </div>

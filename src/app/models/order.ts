@@ -5,5 +5,6 @@ export interface Order {
     productDescription : string,
     productPrice : string,
     productImage : string,
-    productNumber : number
+    productNumber : number,
+    size : string
 }

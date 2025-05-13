@@ -32,8 +32,9 @@ export class ProductService {
     return this.http.post<void>(this.apiUrl + '/api/Product/api/addProduct', productDTO);
   }
 
-  deleteProduct(id : string){
+  deleteProduct(productId : string) : Observable<any>{
 
+    return this.http.delete<any>(`${this.apiUrl}/api/Product/api/deleteProduct?rowGuid=${productId}`);
 
   }
 

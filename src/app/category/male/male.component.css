@@ -1,3 +1,4 @@
+
 .container{
 
     display: grid;
@@ -47,30 +48,13 @@ img{
     max-height: 116px;
 }
 
-.card-button{
 
-    transition: transform .2s;
-    position: absolute;
-
-    transition: background-color .5s;
-    left: 0;
-    
-    
-}
 
 .card-button:hover{
 
     transform: scale(1.20);
     cursor: pointer;
     
-}
-.card-button.clicked{
-
-    background-color: white;
-    border: 1px black solid;
-    color: black;
-    
-
 }
 
 .card-title{
@@ -82,5 +66,4 @@ img{
 
     max-width: 200px;
 }
-
 

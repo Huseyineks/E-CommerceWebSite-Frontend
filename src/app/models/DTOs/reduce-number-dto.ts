@@ -1,6 +1,9 @@
-export interface OrderDTO {
+
+
+export interface ReduceNumberDTO {
 
     productId : string,
     size : string
-    
+
+
 }

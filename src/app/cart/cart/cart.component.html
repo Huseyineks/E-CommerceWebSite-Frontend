@@ -8,7 +8,12 @@
       
       <div class="cart-item-title" style="display: flex;">
       <img mat-card-image [src]="imageUrl+cartItem.productImage">
-      <h5 class="card-title">{{cartItem.productName}}</h5>
+
+      <div>
+  <h5 class="card-title">{{cartItem.productName}}</h5>
+      <h6 style="margin-left: 10px;">({{cartItem.size[0]}})</h6>
+      </div>
+     
     </div>
     <div class="quantity">
 
@@ -25,7 +30,7 @@
     </div>
   </div>
 
-   <button class="card-button btn btn-primary mt-3 confirm-button" *ngIf="cartItems.length != 0">SEPETİ ONAYLA</button>
+   <button class="card-button btn btn-primary mt-3 confirm-button" *ngIf="this.cartItemNumber != 0">SEPETİ ONAYLA</button>
 
   <ng-template #noItem>
     <div>Şu an da sepette mevcut bir ürününüz yok.</div>

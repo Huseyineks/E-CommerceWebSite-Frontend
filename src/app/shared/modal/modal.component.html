@@ -15,18 +15,34 @@
           <img mat-card-image [src]="imageUrl+modalData.productImage">
 
           
-          
         
         </div>
+
+        
         
         <div class="modal-footer">
 
+         
           
           <div>
+
+             <div class="sizes">
+            <button (click)="declareSize('Small')"  [class.selected]="chosenSize == 'Small'">S</button>
+            <button (click)="declareSize('Medium')" [class.selected]="chosenSize == 'Medium'">M</button>
+            <button (click)="declareSize('Large')" [class.selected]="chosenSize == 'Large'">L</button>
+          </div>
             
             <p class="card-text">{{modalData.productPrice| currency : 'USD'}}</p>
-            <button type="button" class="btn btn-primary" (click)="addItemToCart(modalData.id.toString())">Sepete Ekle</button>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeModal()">Close</button></div>
+            
+            <button type="button" class="btn btn-primary cart-button {{clickedButton}}" (click)="addItemToCart(modalData.id.toString())">{{clickedButton == "clicked" ? 'SEPETE EKLENDİ!' : 'SEPETE EKLE'}}</button>
+            <div class="quantity {{showBox}}">
+              <button class="btn reduce-button" (click)="reduceNumberOutOfCart(modalData.id.toString())">-</button>
+              {{itemNumber}}
+              <button class="btn increase-button" (click)="increaseNumber(modalData.id.toString())">+</button>
+            </div>
+            <button type="button" class="btn btn-secondary"data-bs-dismiss="modal" (click)="closeModal()">Close</button>
+          
+          </div>
           
         </div>
       </div>

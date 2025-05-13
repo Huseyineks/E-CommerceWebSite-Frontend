@@ -1,18 +1,19 @@
 <div class="container p-3" *ngIf="products && products.length != 0">
     
 <div class="card mb-3"  *ngFor="let product of products; let i = index">
-    <!-- <h3 class="card-header">Card header</h3> -->
+   
     <div class="card-body card-title-part">
       <h5 class="card-title">{{product.productName}}</h5>
       <h6 class="card-subtitle text-muted" *ngIf="product.productDescription">{{product.productDescription}}</h6>
     </div>
     <img mat-card-image [src]="imageUrl+product.productImage" (click)="showModal(product.rowGuid)" height="299px">
     <div class="card-body">
+     
       <p class="card-text">{{product.productPrice| currency : 'USD'}}</p>
     </div>
    
     <div class="card-body">
-      <button class="card-button btn btn-primary {{clickedButton[i]}}" (click)="addItemToCart(product.id.toString(),i)" (mouseleave)="clickedButton[i] = '';">{{clickedButton[i] == "clicked" ? 'SEPETE EKLENDİ!' : 'SEPETE EKLE'}}</button>
+      <button class="card-button btn btn-primary" (click)="showModal(product.rowGuid)">SEPETE EKLE</button>
     </div>
    
   </div>

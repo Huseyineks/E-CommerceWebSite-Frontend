@@ -1,3 +1,5 @@
+import { ProductSizes } from "./product-sizes";
+
 export interface Product {
 
     id : number,
@@ -5,7 +7,8 @@ export interface Product {
     productName : string,
     productDescription : string,
     productPrice : string,
-    productImage : any
+    productImage : any,
+    productSizes : ProductSizes[] |  null
     
     
 }

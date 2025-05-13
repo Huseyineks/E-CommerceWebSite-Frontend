@@ -4,7 +4,7 @@ import { ProductService } from '../services/product.service';
 import { Product } from 'src/app/models/product';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { ProductDTO } from 'src/app/models/DTOs/product-dto';
 
 @Component({
@@ -24,7 +24,8 @@ export class EditProductComponent implements OnInit{
     productName : '',
     productPrice : '',
     id : 0,
-    rowGuid : ''
+    rowGuid : '',
+    productSizes : null
    
   };
   
@@ -51,23 +52,43 @@ export class EditProductComponent implements OnInit{
           
           this.product = data;
           console.log('Başarıyla tamamlandı.');
+
+
+          this.productForm = new FormGroup({
+    
+            ProductName : new FormControl(this.product.productName),
+            ProductDescription : new FormControl(this.product.productDescription),
+            ProductPrice : new FormControl(this.product.productPrice),
+            ProductImage : new FormControl(''),
+            Id : new FormControl(''),
+            RowGuid : new FormControl(''),
+            ProductSizes: new FormArray([
+                    new FormGroup({
+                      id : new FormControl(this.getId('Small')),
+                      size: new FormControl('Small'),
+                      stock: new FormControl(this.getStock('Small'))
+                    }),
+                    new FormGroup({
+                      id : new FormControl(this.getId('Medium')),
+                      size: new FormControl('Medium'),
+                      stock: new FormControl(this.getStock('Medium'))
+                    }),
+                    new FormGroup({
+                      id : new FormControl(this.getId('Large')),
+                      size: new FormControl('Large'),
+                      stock: new FormControl(this.getStock('Large'))
+                    })
+                  ])
+   
+      
+          });
         },
         error : (err) => {
           console.error(err?.error?.errorMessage);
         }
       })
     }
-   this.productForm = new FormGroup({
-    
-         ProductName : new FormControl(this.product.productName),
-         ProductDescription : new FormControl(this.product.productDescription),
-         ProductPrice : new FormControl(this.product.productPrice),
-         ProductImage : new FormControl(''),
-         Id : new FormControl(''),
-         RowGuid : new FormControl('')
-
    
-       });
     
   }
   onSubmit(){
@@ -85,6 +106,14 @@ export class EditProductComponent implements OnInit{
     formData.append('ProductDescription',editedProduct.ProductDescription);
     formData.append('ProductPrice',editedProduct.ProductPrice);
     formData.append('ProductImage',this.selectedFile != null ? this.selectedFile : 'saaaa');
+
+    if(editedProduct.ProductSizes){
+      
+      formData.append('ProductSizes', JSON.stringify(editedProduct.ProductSizes));
+
+      
+    }
+
     
     this.productService.updateProduct(formData).subscribe({
 
@@ -127,6 +156,20 @@ export class EditProductComponent implements OnInit{
     
 
 
+  }
+
+  productSizesFormArray(): FormArray {
+    return this.productForm.get('ProductSizes') as FormArray;
+  }
+
+
+  getStock(size: string): string {
+    return this.product.productSizes?.find(i => i.size === size)?.stock || '';
+  }
+
+  getId(size : string) : string{
+
+    return this.product.productSizes?.find(i => i.size === size)?.id || '';
   }
 
 }

@@ -17,7 +17,13 @@ h1{
     align-items: center;
     height: 100%;
     width: 100%;
+    flex-direction: row;
     
+}
+
+.skeleton-part .border-part{
+    border: 1px solid lightgray;
+
 }
 
 .card-body{
@@ -36,7 +42,10 @@ h1{
 
 form{
 
-    border: 1px solid lightgray;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 div.imageUpdated{
@@ -69,6 +78,37 @@ input,input:focus{
     cursor: pointer;
     
 }
+input,input:focus{
+    
+    box-shadow: none;
+    
+
+    
+  }
+
+  input.description-input{
+
+    color: #55595CBF;
+    font-size: smaller;
+  }
+
+  input.name-input{
+
+    color: #55595C;
+  }
+
+  table input{
+
+    border: 0;
+    outline: 0;
+  }
 
 
+table input[formControlName = "size"]{
 
+    border: none;
+    outline: none;
+    caret-color: transparent;
+    background-color: transparent;
+    pointer-events: none; 
+  }

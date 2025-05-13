@@ -1,12 +1,13 @@
 import { effect, Injectable,OnInit, signal } from '@angular/core';
 import { Product } from '../models/product';
-import { Observable, of } from 'rxjs';
+import { Observable, ObservedValuesFromArray, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
 import { OrderDTO } from '../models/DTOs/order-dto';
 import { Order } from '../models/order';
 import { ProductDTO } from '../models/DTOs/product-dto';
 import { UserService } from '../user/user.service';
+import { ReduceNumberDTO } from '../models/DTOs/reduce-number-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -67,5 +68,10 @@ export class CartService{
   reduceNumber(orderId : number){
 
     return this.http.put<any>(`${this.apiUrl}/api/Order/api/reduceNumber?orderId=${orderId}`,null);
+  }
+
+  reduceNumberOutOfCart(reduceNumberDTO : ReduceNumberDTO) : Observable<any>{
+
+    return this.http.put<any>(this.apiUrl + '/api/Order/api/reduceNumberOutOfCart',reduceNumberDTO,{withCredentials : true})
   }
 }
