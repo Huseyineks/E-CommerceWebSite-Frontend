@@ -43,6 +43,16 @@ export class EditProductComponent implements OnInit{
     imagePreview: string | ArrayBuffer | null = null;
 
   ngOnInit(): void {
+
+     this.productForm = new FormGroup({
+    ProductName: new FormControl(''),
+    ProductDescription: new FormControl(''),
+    ProductPrice: new FormControl(''),
+    ProductImage: new FormControl(''),
+    Id: new FormControl(''),
+    RowGuid: new FormControl(''),
+    ProductSizes: new FormArray([])
+  });
     let id = this.route.snapshot.paramMap.get('id');
 
     if(id){

@@ -30,7 +30,7 @@
     </div>
   </div>
 
-   <button class="card-button btn btn-primary mt-3 confirm-button" *ngIf="this.cartItemNumber != 0">SEPETİ ONAYLA</button>
+   <button class="card-button btn btn-primary mt-3 confirm-button"  (click) = "completeOrder()"    *ngIf="this.cartItemNumber != 0">SEPETİ ONAYLA</button>
 
   <ng-template #noItem>
     <div>Şu an da sepette mevcut bir ürününüz yok.</div>

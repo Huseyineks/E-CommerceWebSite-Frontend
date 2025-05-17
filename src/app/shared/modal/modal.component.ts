@@ -7,6 +7,7 @@ import { OrderDTO } from 'src/app/models/DTOs/order-dto';
 import { UserService } from 'src/app/user/user.service';
 import { CartService } from 'src/app/cart/cart.service';
 import { ReduceNumberDTO } from 'src/app/models/DTOs/reduce-number-dto';
+import { ProductService } from 'src/app/admin/services/product.service';
 
 @Component({
   selector: 'app-modal',
@@ -17,6 +18,7 @@ export class ModalComponent {
 
 
   chosenSize : string = '';
+  chosenSizeQuantity : number = 0;
   showBox : string = '';
   modalState : string = '';
   itemNumber : number = 0;
@@ -35,7 +37,7 @@ export class ModalComponent {
   clickedButton : string = '';
   imageUrl : string = environment.imageUrl;
 
-  constructor(private modalService: ModalService,private userService : UserService,private cartService : CartService) {
+  constructor(private modalService: ModalService,private userService : UserService,private cartService : CartService,private productService : ProductService) {
 
     effect(() =>{
       
@@ -138,7 +140,8 @@ addItemToCart(productId : string) : void{
         this.itemNumber -=1;
         if(this.itemNumber == 0){
 
-          this.closeModal();
+          this.clickedButton = '';
+          this.showBox ='';
         }
         this.cartService.itemNumber.set(this.cartService.itemNumber() -1);
         console.log('Başarıyla tamamlandı');
@@ -158,11 +161,32 @@ addItemToCart(productId : string) : void{
     
   }
 
-   declareSize(size : string) : void{
+   declareSize(size : string,productId : string) : void{
 
     this.chosenSize = size;
     this.itemNumber = 0;
     this.clickedButton = '';
+
+    const orderDTO : OrderDTO = {
+
+      productId : productId,
+      size : this.chosenSize
+
+    }
+
+    this.productService.getProductQuantity(orderDTO).subscribe({
+      next : (data) => {
+
+        this.chosenSizeQuantity = data;
+
+        console.log('İşlem başarıyla tammalandı.')
+      },
+
+      error : () => {
+
+        console.error('Bir hata oluştu');
+      }
+    })
   }
 
   

@@ -27,9 +27,15 @@
           <div>
 
              <div class="sizes">
-            <button (click)="declareSize('Small')"  [class.selected]="chosenSize == 'Small'">S</button>
-            <button (click)="declareSize('Medium')" [class.selected]="chosenSize == 'Medium'">M</button>
-            <button (click)="declareSize('Large')" [class.selected]="chosenSize == 'Large'">L</button>
+
+              
+                 <button (click)="declareSize('Small',modalData.id.toString())"  [class.selected]="chosenSize == 'Small'">S</button>
+            <button (click)="declareSize('Medium',modalData.id.toString())" [class.selected]="chosenSize == 'Medium'">M</button>
+            <button (click)="declareSize('Large',modalData.id.toString())" [class.selected]="chosenSize == 'Large'">L</button>
+             
+          
+
+
           </div>
             
             <p class="card-text">{{modalData.productPrice| currency : 'USD'}}</p>
@@ -43,7 +49,7 @@
             <button type="button" class="btn btn-secondary"data-bs-dismiss="modal" (click)="closeModal()">Close</button>
           
           </div>
-          
+          <div class="product-quantity" *ngIf="this.chosenSize!=''"><h6 style="color: black;">{{this.chosenSizeQuantity}} Adet Kaldı</h6></div>
         </div>
       </div>
     </div>

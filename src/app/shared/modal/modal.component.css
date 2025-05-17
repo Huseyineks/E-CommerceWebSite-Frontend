@@ -30,7 +30,17 @@
 
     display: flex;
     justify-content: start;
+    position: relative;
     
+}
+
+.modal-footer .product-quantity{
+
+    position: absolute;
+    right: 0;
+    top : 16px;
+    
+
 }
 
 .cart-button{
@@ -54,6 +64,7 @@
     display: flex;
     gap: 2px;
     margin-bottom: 3px;
+    
 }
 .sizes button{
 

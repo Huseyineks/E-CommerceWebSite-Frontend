@@ -8,6 +8,7 @@ import { Order } from '../models/order';
 import { ProductDTO } from '../models/DTOs/product-dto';
 import { UserService } from '../user/user.service';
 import { ReduceNumberDTO } from '../models/DTOs/reduce-number-dto';
+import { AdressDTO } from '../models/DTOs/adress-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,8 @@ import { ReduceNumberDTO } from '../models/DTOs/reduce-number-dto';
 export class CartService{
 
   public itemNumber = signal(0);
+
+  cartItems : Order[] = [];
 
   constructor(private http : HttpClient,private userService : UserService) { 
 
@@ -57,7 +60,7 @@ export class CartService{
   }
   getNumber() : Observable<any>{
 
-    return this.http.get<any>(this.apiUrl + '/api/Order/api/getNumber');
+    return this.http.get<any>(this.apiUrl + '/api/Order/api/getNumber',{withCredentials : true});
   }
   increaseNumber(orderId : number) : Observable<any> {
 
@@ -73,5 +76,9 @@ export class CartService{
   reduceNumberOutOfCart(reduceNumberDTO : ReduceNumberDTO) : Observable<any>{
 
     return this.http.put<any>(this.apiUrl + '/api/Order/api/reduceNumberOutOfCart',reduceNumberDTO,{withCredentials : true})
+  }
+  completeOrder(adressDTO : AdressDTO) : Observable<any>{
+
+    return this.http.post<any>(this.apiUrl + '/api/Order/api/completeOrder',adressDTO,{withCredentials : true});
   }
 }

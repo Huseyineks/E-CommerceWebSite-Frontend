@@ -1,0 +1,149 @@
+h1,h2{
+
+    font-family: 'Work Sans', sans-serif;
+
+    letter-spacing: 2px;
+    font-weight: 600;
+
+
+}
+
+.items{
+
+
+
+    border: 1px solid rgb(214, 209, 209);
+
+    border-radius: 0.70rem;
+
+    padding: 15px;
+
+    
+
+    /* overflow-y: scroll;
+
+    height: 100px;
+
+    overflow-x: hidden; */
+}
+
+.items .dropwdown{
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+}
+
+.items .dropwdown h2{
+
+    margin-bottom: 0;
+}
+
+
+
+.items img{
+
+    height: 50px;
+    width: 50px;
+}
+
+.items .item.hide{
+
+    display: none;
+   
+    
+}
+
+.items .item.show{
+
+    display: flex;
+   
+    
+}
+
+.items .item div{
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-around;
+
+    margin-left: 5px;
+}
+
+.up-sign{
+
+    display: none;
+}
+
+.up-sign.show{
+
+    display: block;
+}
+
+.down-sign.hide{
+
+    display: none;
+}
+
+.delivery-adress{
+
+    margin-top: 15px;
+
+    border: 1px solid rgb(214, 209, 209);
+
+    border-radius: 0.70rem;
+
+    
+   
+}
+.delivery-adress h2{
+
+    padding: 15px;
+}
+
+.delivery-adress .registered-adress{
+
+    width: 100%;
+
+     border: 1px solid rgb(214, 209, 209);
+
+    border-radius: 0.70rem;
+    border-bottom: 0px;
+
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+
+    padding:15px;
+
+    
+}
+.new-adress-area{
+
+    margin-top: 5px;
+    display: none;
+}
+
+.new-adress-area textarea{
+
+   border-radius: 0.70rem;
+   
+
+}
+
+
+.new-adress-area.show{
+
+    display: block;
+    
+}
+
+
+
+
+input[type='radio']{
+
+    box-shadow: none;
+}

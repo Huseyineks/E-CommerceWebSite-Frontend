@@ -52,13 +52,7 @@ div.imageUpdated{
     display: none;
 }
 
-input,input:focus{
-    
-    box-shadow: none;
-    
 
-    
-  }
 
   input.description-input{
 
@@ -86,16 +80,6 @@ input,input:focus{
     
   }
 
-  input.description-input{
-
-    color: #55595CBF;
-    font-size: smaller;
-  }
-
-  input.name-input{
-
-    color: #55595C;
-  }
 
   table input{
 

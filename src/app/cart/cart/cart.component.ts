@@ -4,6 +4,7 @@ import { Order } from 'src/app/models/order';
 import { environment } from 'src/environments/environment.development';
 import { OrderDTO } from 'src/app/models/DTOs/order-dto';
 import { UserService } from 'src/app/user/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -21,7 +22,7 @@ export class CartComponent implements OnInit{
 
   cartItemNumber : number = 0;
   
-  constructor(private cartService : CartService,private userService : UserService){
+  constructor(private cartService : CartService,private userService : UserService,private router : Router){
 
     effect(() =>{
          
@@ -140,6 +141,17 @@ export class CartComponent implements OnInit{
         console.error(err?.error?.message)
        }
     })
+  }
+
+
+  completeOrder() : void{
+
+    this.cartService.cartItems = this.cartItems;
+
+  
+
+  this.router.navigate(['cart/complete-order']);
+
   }
 
 

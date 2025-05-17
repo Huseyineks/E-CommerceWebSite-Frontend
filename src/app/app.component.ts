@@ -62,6 +62,8 @@ export class AppComponent implements OnInit{
       next : () => {
 
         console.log("İşlem başarıyla tamamlandı.")
+
+        
       },
 
       error : () => {

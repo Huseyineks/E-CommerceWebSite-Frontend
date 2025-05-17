@@ -14,6 +14,8 @@ import { CartComponent } from './cart/cart/cart.component';
 
 import { MaleComponent } from './category/male/male.component';
 import { SharedModule } from './shared/shared.module';
+import { CompleteOrderComponent } from './cart/cart/complete-order/complete-order.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -21,7 +23,9 @@ import { SharedModule } from './shared/shared.module';
   declarations: [
     AppComponent,
     HomeComponent,
-    CartComponent
+    CartComponent,
+    CompleteOrderComponent
+    
     
   ],
   imports: [
@@ -30,7 +34,8 @@ import { SharedModule } from './shared/shared.module';
     UserModule,
     AdminModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
    
   ],
   providers: [

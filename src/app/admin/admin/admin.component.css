@@ -83,3 +83,61 @@ height: 100vh;
     border-radius: 0.1rem;
 }
 
+
+
+
+.products-dropdown{
+
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown-list{
+
+    display: none !important;
+}
+
+.dropdown-list.show{
+
+    display: block !important;
+}
+
+
+.dropdown-list li{
+
+    border: 1px solid rgb(194, 190, 190);
+
+}
+
+.dropdown-list li a{
+
+    font-size: smaller;
+}
+
+.dropdown-list li svg{
+
+    font-size: smaller;
+    margin-top: 1px;
+   
+}
+
+li.whiteColor{
+
+    background-color: white !important;
+}
+
+.down-sign.hide{
+
+    display: none;
+ 
+}
+
+.up-sign{
+
+    display: none;
+}
+
+.up-sign.show{
+
+    display: block;
+}

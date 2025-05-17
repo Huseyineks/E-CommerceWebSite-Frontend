@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { ProductDTO } from '../../models/DTOs/product-dto';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
-import { Observable } from 'rxjs';
+import { Observable, ObservedValuesFromArray } from 'rxjs';
 import { Product } from '../../models/product';
+import { OrderDTO } from 'src/app/models/DTOs/order-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +45,12 @@ export class ProductService {
     return this.http.put<any>(this.apiUrl + '/api/Product/api/updateProduct',productDTO)
 
     
+  }
+
+  getProductQuantity(orderDTO : OrderDTO) : Observable<number>{
+
+
+    return this.http.post<number>(this.apiUrl + '/api/Product/api/productQuantity',orderDTO)
   }
 
 }

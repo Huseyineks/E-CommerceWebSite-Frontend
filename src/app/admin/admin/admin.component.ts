@@ -8,6 +8,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 export class AdminComponent implements OnInit {
 
   mouseclicked : string[] = [];
+  dropwdown : string = ''
   ngOnInit(): void {
 
   this.mouseclicked = new Array(5).fill('');
@@ -22,6 +23,15 @@ export class AdminComponent implements OnInit {
 
     this.mouseclicked[index] = 'mouseclicked';
 
+  }
+
+  showDropdown() : void{
+
+      this.dropwdown = 'show'
+    
+  }
+  closeDropdown() : void{
+    this.dropwdown = ''
   }
 
 }
