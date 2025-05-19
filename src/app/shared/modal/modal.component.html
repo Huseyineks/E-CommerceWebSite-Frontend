@@ -40,7 +40,7 @@
             
             <p class="card-text">{{modalData.productPrice| currency : 'USD'}}</p>
             
-            <button type="button" class="btn btn-primary cart-button {{clickedButton}}" (click)="addItemToCart(modalData.id.toString())">{{clickedButton == "clicked" ? 'SEPETE EKLENDİ!' : 'SEPETE EKLE'}}</button>
+            <button type="button" class="btn btn-primary cart-button {{clickedButton}}" (click)="addItemToCart(modalData.id.toString())" [disabled]="this.chosenSizeQuantity == 0">{{clickedButton == "clicked" ? 'SEPETE EKLENDİ!' : 'SEPETE EKLE'}}</button>
             <div class="quantity {{showBox}}">
               <button class="btn reduce-button" (click)="reduceNumberOutOfCart(modalData.id.toString())">-</button>
               {{itemNumber}}
@@ -49,7 +49,9 @@
             <button type="button" class="btn btn-secondary"data-bs-dismiss="modal" (click)="closeModal()">Close</button>
           
           </div>
-          <div class="product-quantity" *ngIf="this.chosenSize!=''"><h6 style="color: black;">{{this.chosenSizeQuantity}} Adet Kaldı</h6></div>
+          <div class="product-quantity" *ngIf="this.chosenSize!=''"><h6 style="color: black;">{{chosenSizeQuantity == 0 
+            ? 'TÜKENDİ!' 
+            : chosenSizeQuantity + ' Adet Kaldı' }}</h6></div>
         </div>
       </div>
     </div>

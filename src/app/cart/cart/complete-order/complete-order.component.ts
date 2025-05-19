@@ -4,6 +4,7 @@ import { CartService } from '../../cart.service';
 import { environment } from 'src/environments/environment.development';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AdressDTO } from 'src/app/models/DTOs/adress-dto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-complete-order',
@@ -23,7 +24,7 @@ export class CompleteOrderComponent implements OnInit {
 
   adressVisiblity : string = ''
 
-  constructor(private cartService : CartService){}
+  constructor(private cartService : CartService,private router : Router){}
 
   ngOnInit(): void {
    
@@ -96,6 +97,8 @@ let nullOrder : Order = {
       next : () => {
 
         console.log('Siparişiniz alındı')
+        this.cartService.itemNumber.set(0);
+        this.router.navigate(['/home']);
       },
 
       error : () =>{

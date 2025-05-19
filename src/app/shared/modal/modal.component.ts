@@ -63,6 +63,7 @@ closeModal(){
   this.chosenSize = '';
   this.showBox = '';
   this.clickedButton = '';
+  this.chosenSizeQuantity = 0;
 }
 
 

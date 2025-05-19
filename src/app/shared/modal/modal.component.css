@@ -1,6 +1,10 @@
 .show{
 
     display: flex;
+   
+    
+    justify-content: center;
+    align-items: center;
 }
 
 .hide{
@@ -11,6 +15,8 @@
 .modal{
 
     border: 2px solid black;
+    background-color: rgba(0, 0, 0, 0.337);
+    
 }
 
 .modal-body{
