@@ -36,7 +36,8 @@ let nullOrder : Order = {
       productNumber : 0,
       productPrice : '',
       rowGuid : '',
-      size : ''
+      size : '',
+      createdDate : ''
     }
 
      this.adressForm = new FormGroup({

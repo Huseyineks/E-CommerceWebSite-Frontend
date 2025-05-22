@@ -1,0 +1,71 @@
+<div class="container p-5">
+  <div class="row">
+    <!-- Üyelik Bilgilerim -->
+    <div class="col-md-6 mb-4">
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          <h5 class="mb-0">Üyelik Bilgilerim</h5>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="updateUserForm" (ngSubmit)="onSubmitProfile()">
+
+             <div class="validation-message" *ngFor="let error of validationErrors" style="color: red;">
+      {{error}}
+    </div>
+            <div class="mb-3">
+              <input type="text" class="form-control" placeholder="Username" formControlName="Username">
+            </div>
+            <div class="mb-3">
+              <input type="email" class="form-control" placeholder="Email" formControlName="Email">
+            </div>
+            <div class="mb-3">
+              <input type="text" class="form-control" placeholder="City" formControlName="City">
+            </div>
+            <div class="mb-3">
+              <input type="text" class="form-control" placeholder="Neighbourhood" formControlName="Neighbourhood">
+            </div>
+            <div class="mb-3">
+              <input type="text" class="form-control" placeholder="Street" formControlName="Street">
+            </div>
+            <div class="mb-3">
+              <textarea class="form-control" rows="3" placeholder="Adress" formControlName="Adress"></textarea>
+            </div>
+            <div class="mb-3">
+              <input type="text" class="form-control" placeholder="Postal Code" formControlName="PostalCode">
+            </div>
+            <div class="mb-3">
+              <input type="text" class="form-control" placeholder="Phone Number" formControlName="PhoneNumber">
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Bilgileri Güncelle</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Şifre Güncelleme -->
+    <div class="col-md-6 mb-4">
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          <h5 class="mb-0">Şifre Güncelleme</h5>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="updateUserForm" (ngSubmit)="onSubmitPassword()">
+            <div class="error-message" *ngIf="this.errorMessage!=''" style="color: red;">
+              {{this.errorMessage}}
+            </div>
+            <div class="mb-3">
+              <input type="password" class="form-control" placeholder="Şuan ki Şifre" formControlName="Password">
+            </div>
+            <div class="mb-3">
+              <input type="password" class="form-control" placeholder="Yeni Şifre" formControlName="NewPassword">
+            </div>
+            <div class="mb-3">
+              <input type="password" class="form-control" placeholder="Yeni Şifre Tekrar" formControlName="ConfirmPassword">
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Şifreyi Güncelle</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

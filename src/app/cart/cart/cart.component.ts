@@ -50,7 +50,8 @@ export class CartComponent implements OnInit{
       productNumber : 0,
       productPrice : '',
       rowGuid : '',
-      size : ''
+      size : '',
+      createdDate : ''
     }
 
     

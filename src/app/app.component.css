@@ -17,3 +17,10 @@
     color: black;
     background-color: white;
 }
+
+.dropdown-menu{
+
+    font-family: 'Work Sans', sans-serif;
+
+    letter-spacing: 2px;
+}

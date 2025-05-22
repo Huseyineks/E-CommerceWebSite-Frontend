@@ -7,6 +7,7 @@ import { RefreshTokenDTO } from '../models/DTOs/refresh-token-dto';
 import { TokenRequestDTO } from '../models/DTOs/token-request-dto';
 import { Router } from '@angular/router';
 import { LoginResponse } from '../models/login-response';
+import { UpdateUserDTO } from '../models/DTOs/updateUser-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -146,5 +147,20 @@ export class UserService {
   getAllUsers() : Observable<UserDTO[]>{
 
     return this.http.get<UserDTO[]>(this.apiUrl + '/api/User/api/users');
+  }
+
+  getUser() : Observable<any>{
+
+    return this.http.get<any>(this.apiUrl + '/api/User/api/getUser',{withCredentials : true});
+  }
+
+   updateUserProfile(userDTO : UpdateUserDTO) : Observable<any>{
+
+    return this.http.put<any>(this.apiUrl + '/api/User/api/updateUserProfile',userDTO,{withCredentials : true});
+  }
+
+  updateUserPassword(userDTO : UpdateUserDTO) : Observable<any>{
+
+    return this.http.put<any>(this.apiUrl + '/api/User/api/updateUserPassword',userDTO,{withCredentials : true});
   }
 }

@@ -17,6 +17,9 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { OrdersComponent } from './admin/orders/orders.component';
 import { EditProductComponent } from './admin/edit-product/edit-product.component';
 import { CompleteOrderComponent } from './cart/cart/complete-order/complete-order.component';
+import { MyAccountComponent } from './my-account/my-account.component';
+import { PastOrderComponent } from './past-order/past-order.component';
+import { OrderDetailComponent } from './past-order/order-detail/order-detail.component';
 
 
 
@@ -35,6 +38,9 @@ const routes: Routes = [
   {path : 'home',component : HomeComponent},
   {path : 'cart',component : CartComponent,canActivate : [authGuard]},
   {path : 'cart/complete-order',component : CompleteOrderComponent},
+  {path:'my-account',component:MyAccountComponent},
+  {path:'order-history',component:PastOrderComponent},
+  {path:'order-detail/:id',component:OrderDetailComponent}
 
   
 ];

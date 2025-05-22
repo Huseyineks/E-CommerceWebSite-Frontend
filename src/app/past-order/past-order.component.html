@@ -1,0 +1,36 @@
+<div class="past-orders-container">
+    
+  <div *ngFor="let masterOrder of pastOrders" class="order-card">
+    <!-- Upper Section -->
+    <div class="order-header">
+      <div class="order-info">
+        <div class="info-group">
+          <h3>Sipariş Tarihi</h3>
+          <p>{{masterOrder.createdDate | date:'dd.MM.yyyy'}}</p>
+        </div>
+        <div class="info-group">
+          <h3>Sipariş Özeti</h3>
+          <p>{{masterOrder.orders.length}} Teslimat, {{masterOrder.orders | totalProductNumber}} Ürün</p>
+        </div>
+        <div class="info-group">
+          <h3>Tutar</h3>
+          <p>{{masterOrder.orders | totalPrice | currency : 'USD'}}</p>
+        </div>
+      </div>
+      <button class="detail-button" (click)="onClick(masterOrder.guid)">Sipariş Detayı</button>
+    </div>
+
+    <!-- Divider -->
+    <div class="divider"></div>
+
+    <!-- Lower Section -->
+    <div class="order-details">
+      <div class="product-images-container">
+        <div *ngFor="let order of masterOrder.orders" class="product-image-container">
+          <img [src]="this.imageUrl + order.productImage" [alt]="order.productName" class="product-image">
+          <div class="product-number-badge">{{order.productNumber}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
