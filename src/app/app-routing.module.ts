@@ -20,6 +20,7 @@ import { CompleteOrderComponent } from './cart/cart/complete-order/complete-orde
 import { MyAccountComponent } from './my-account/my-account.component';
 import { PastOrderComponent } from './past-order/past-order.component';
 import { OrderDetailComponent } from './past-order/order-detail/order-detail.component';
+import { AdminOrderDetailComponent } from './admin/orders/admin-order-detail/admin-order-detail.component';
 
 
 
@@ -40,7 +41,8 @@ const routes: Routes = [
   {path : 'cart/complete-order',component : CompleteOrderComponent},
   {path:'my-account',component:MyAccountComponent},
   {path:'order-history',component:PastOrderComponent},
-  {path:'order-detail/:id',component:OrderDetailComponent}
+  {path:'order-detail/:id',component:OrderDetailComponent},
+  {path:'admin/order-detail/:id',component:AdminOrderDetailComponent}
 
   
 ];

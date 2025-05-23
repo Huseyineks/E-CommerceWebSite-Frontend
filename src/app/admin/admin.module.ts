@@ -13,6 +13,9 @@ import { HomeComponent } from '../home/home.component';
 import { SharedModule } from "../shared/shared.module";
 import { ModalComponent } from '../shared/modal/modal.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
+import { TotalPricePipe, TotalProductNumberPipe } from '../pipes/order-pipes';
+import { AdminOrderDetailComponent } from './orders/admin-order-detail/admin-order-detail.component';
+
 
 
 
@@ -26,7 +29,11 @@ import { EditProductComponent } from './edit-product/edit-product.component';
     ProductsComponent,
     OrdersComponent,
     CustomersComponent,
-    EditProductComponent
+    EditProductComponent,
+    AdminOrderDetailComponent
+    
+    
+    
   ],
   imports: [
     CommonModule,

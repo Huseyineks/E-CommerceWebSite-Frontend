@@ -24,7 +24,11 @@ this.orderService.getPastOrders().subscribe({
 
   next : (data) =>{
 
-    this.pastOrders = data;
+    this.pastOrders = data.sort((a: MasterOrderDTO, b: MasterOrderDTO) => {
+      const dateA = new Date(a.createdDate).getTime();
+      const dateB = new Date(b.createdDate).getTime();
+      return dateA - dateB;
+    });
     console.log('Başarıyla tamamlandı.');
   },
 

@@ -16,7 +16,8 @@ export class OrderDetailComponent implements OnInit {
    guid: '',
    orders: [],
    deliveryAdress: '',
-   createdDate: undefined
+   createdDate: undefined,
+   user : null
  };
   constructor(private route : ActivatedRoute,private orderService : OrderService){}
   ngOnInit(): void {

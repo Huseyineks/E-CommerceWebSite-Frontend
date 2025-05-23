@@ -19,7 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MyAccountComponent } from './my-account/my-account.component';
 import { PastOrderComponent } from './past-order/past-order.component';
 import { OrderDetailComponent } from './past-order/order-detail/order-detail.component';
-import { TotalProductNumberPipe, TotalPricePipe } from './pipes/order-pipes';
+
+
 
 @NgModule({
   declarations: [
@@ -29,9 +30,9 @@ import { TotalProductNumberPipe, TotalPricePipe } from './pipes/order-pipes';
     CompleteOrderComponent,
     MyAccountComponent,
     PastOrderComponent,
-    OrderDetailComponent,
-    TotalProductNumberPipe,
-    TotalPricePipe
+    OrderDetailComponent
+   
+    
   ],
   imports: [
     BrowserModule,

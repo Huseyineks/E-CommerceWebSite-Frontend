@@ -1,0 +1,74 @@
+<div class="order-detail-container">
+  <div class="order-header">
+    <h2>Sipariş Detayı</h2>
+    <div class="order-info">
+      <div class="info-item">
+        <span class="label">Sipariş Tarihi:</span>
+        <span class="value">{{order.createdDate | date:'dd.MM.yyyy HH:mm'}}</span>
+      </div>
+      <div class="info-item">
+        <span class="label">Teslimat Adresi:</span>
+        <span class="value">{{order.deliveryAdress}}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Kullanıcı Bilgileri -->
+  <div class="user-info-section" *ngIf="order.user">
+    <h3>Kullanıcı Bilgileri</h3>
+    <div class="user-details">
+      <div class="user-info-grid">
+        <div class="info-item">
+          <span class="label">Kullanıcı Adı:</span>
+          <span class="value">{{order.user.username}}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">E-posta:</span>
+          <span class="value">{{order.user.email}}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Telefon:</span>
+          <span class="value">{{order.user.phoneNumber}}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Adres:</span>
+          <span class="value">{{order.user.adress}}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Şehir:</span>
+          <span class="value">{{order.user.city}}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Posta Kodu:</span>
+          <span class="value">{{order.user.postalCode}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="orders-container">
+    <div *ngFor="let order of order.orders" class="order-card">
+      <div class="product-image">
+        <img [src]="imageUrl + order.productImage" [alt]="order.productName">
+      </div>
+      <div class="product-details">
+        <h3 class="product-name">{{order.productName}}</h3>
+        <p class="product-description">{{order.productDescription}}</p>
+        <div class="product-specs">
+          <div class="spec-item">
+            <span class="label">Adet:</span>
+            <span class="value">{{order.productNumber}}</span>
+          </div>
+          <div class="spec-item">
+            <span class="label">Beden:</span>
+            <span class="value">{{order.size}}</span>
+          </div>
+          <div class="spec-item">
+            <span class="label">Birim Fiyat:</span>
+            <span class="value">{{order.productPrice | currency:'USD'}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

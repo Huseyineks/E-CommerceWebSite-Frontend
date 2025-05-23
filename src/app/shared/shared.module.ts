@@ -1,16 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ModalComponent } from './modal/modal.component';
-
+import { TotalPricePipe, TotalProductNumberPipe } from '../pipes/order-pipes';
 
 
 @NgModule({
   declarations: [
-    ModalComponent
+    ModalComponent,
+    TotalProductNumberPipe,
+    TotalPricePipe
   ],
   imports: [
     CommonModule
   ],
-  exports : [ModalComponent]
+  exports : [ModalComponent,
+
+    TotalProductNumberPipe,
+    TotalPricePipe
+  ]
 })
 export class SharedModule { }
